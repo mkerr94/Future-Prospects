@@ -1,0 +1,17 @@
+<h1>
+    Courses
+</h1>
+<br>
+<%= link_to "Create new course", new_course_path, class: "btn btn-primary" %>
+<hr>
+<br>
+
+<% @courses.each do |course| %>
+
+<p><%= course.title %></p>
+<br>
+<p><%= course.description %></p>
+<hr>
+<br>
+
+<% end %>
