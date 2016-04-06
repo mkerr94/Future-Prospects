@@ -2,11 +2,20 @@
 @import "bootstrap";
 
 .body-container{
-    padding-left: 50px;
-    padding-top: 20px;
+
 }
 
 .custom-title{
     font-weight: 300;
     font-size: 2em;
+}
+
+.course-title{
+    font-weight: 500;
+    font-size: 1.3em;
+}
+
+.course-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top: 5px;
 }

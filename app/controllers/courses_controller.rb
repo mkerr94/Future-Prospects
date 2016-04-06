@@ -19,19 +19,30 @@ class CoursesController < ApplicationController
     end
 
     def update
+        @course = Course.find(params[:id])
 
+        if @course.update(course_params)
+            flash[:success] = 'Course was updated'
+            redirect_to course_path(@course)
+        else
+            render 'edit'
+        end
     end
 
     def destroy
+        @course = Course.find(params[:id])
 
+        @course.destroy
+        flash[:danger] = 'Course deleted'
+        redirect_to courses_path
     end
 
     def show
-
+        @course = Course.find(params[:id])
     end
 
     def edit
-
+        @course = Course.find(params[:id])
     end
 
     private
