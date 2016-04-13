@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :staffs
+  devise_for :staffs, :controllers => { :registrations => 'registrations' }
+  resources :staffs, :only => [ :show ]
   devise_for :users
+  resources :users, :only => [ :show, :index]
+
+
 root 'pages#home'
 get 'about', to: 'pages#about'
 get 'register_choice', to: 'pages#register_choice'

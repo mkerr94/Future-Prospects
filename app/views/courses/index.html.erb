@@ -4,7 +4,7 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if staff_signed_in? %>
     <p align='center'><%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-primary" %></p>
 <% end %>
 
@@ -23,7 +23,7 @@
                     <p>
                         <%= course.description %>
                     </p>
-                    <% if user_signed_in? %>
+                    <% if staff_signed_in? %>
                         <div class="course-actions">
                             <%= link_to "Edit", edit_course_path(course), class: 'btn btn-xs btn-primary' %>
                             <%= link_to "Delete", course_path(course), method: :delete,

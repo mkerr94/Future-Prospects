@@ -1,0 +1,9 @@
+<h1 align='center'>All Students</h1>
+<br>
+<% @users.each do |user| %>
+<ul>
+    <li>
+        <%= link_to user.email, user_path(user) %>
+    </li>
+</ul>
+<% end %>
