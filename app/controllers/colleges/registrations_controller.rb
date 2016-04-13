@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Colleges::RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(registration_params)
@@ -21,7 +21,7 @@ class RegistrationsController < Devise::RegistrationsController
   private
 
   def registration_params
-    params.require(:staff).permit(:email, :password, :password_confirmation, :forename, :surname)
+      params.require(:college).permit(:email, :password, :password_confirmation, :address, :name, :description, :phone_no)
   end
 
 end

@@ -10,6 +10,7 @@ class CoursesController < ApplicationController
 
     def create
         @course = Course.new(course_params)
+        @course.college = current_college
         if @course.save
             flash[:success] = "Course was created"
             redirect_to courses_path
@@ -48,7 +49,7 @@ class CoursesController < ApplicationController
     private
     # Whitelisting the values which can be passed from view to controller
     def course_params
-        params.require(:course).permit(:title, :description)
+        params.require(:course).permit(:title, :description, :college)
     end
 
 end

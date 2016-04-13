@@ -1,0 +1,18 @@
+<h1><%= @college.name %></h1>
+
+<ul>
+    <li><%= @college.email %></li>
+    <li><%= @college.description %></li>
+    <li><%= @college.address %></li>
+    <li><%= @college.phone_no %></li>
+</ul>
+
+<br>
+<hr>
+
+<h3>All Courses</h3>
+<% @courses.each do |course| %>
+    <ul>
+        <li><%= link_to course.title, course_path(course) %></li>
+    </ul>
+<% end %>

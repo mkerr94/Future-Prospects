@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :staffs, :controllers => { :registrations => 'registrations' }
+  devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
+  resources :colleges, :only => [ :show, :index ]
+  devise_for :staffs, :controllers => { :registrations => 'staffs/registrations' }
   resources :staffs, :only => [ :show ]
   devise_for :users
   resources :users, :only => [ :show, :index]
