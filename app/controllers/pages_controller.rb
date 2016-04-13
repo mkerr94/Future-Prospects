@@ -10,4 +10,12 @@ class PagesController < ApplicationController
 
     end
 
+    def login_choice
+      #code
+    end
+
+    def register_choice
+      #code
+    end
+
 end

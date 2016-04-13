@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
+  devise_for :staffs
   devise_for :users
 root 'pages#home'
 get 'about', to: 'pages#about'
+get 'register_choice', to: 'pages#register_choice'
+get 'login_choice', to: 'pages#login_choice'
 
 resources :courses
 
