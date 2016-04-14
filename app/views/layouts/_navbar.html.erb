@@ -61,6 +61,9 @@
             <% if staff_signed_in? %>
                 <li><%= link_to "View Account", staff_path(current_staff)%></li>
             <% end %>
+            <% if user_signed_in? %>
+                <li><%= link_to "View Account", user_path(current_user)%></li>
+            <% end %>
           </ul>
         </li>
         <% end %>
