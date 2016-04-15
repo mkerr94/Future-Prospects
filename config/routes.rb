@@ -1,19 +1,19 @@
 Rails.application.routes.draw do
 
-  devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
-  resources :colleges, :only => [ :show, :index ]
-  devise_for :staffs, :controllers => { :registrations => 'staffs/registrations' }
-  resources :staffs, :only => [ :show ]
-  devise_for :users, :controllers => { :registrations => 'users/registrations' }
-  resources :users, :only => [ :show, :index]
-
+devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
+resources :colleges, :only => [ :show, :index ]
+devise_for :staffs, :controllers => { :registrations => 'staffs/registrations' }
+resources :staffs, :only => [ :show ]
+devise_for :users, :controllers => { :registrations => 'users/registrations' }
+resources :users, :only => [ :show, :index]
+resources :courses
+resources :categories, except: [:destroy]
 
 root 'pages#home'
 get 'about', to: 'pages#about'
 get 'register_choice', to: 'pages#register_choice'
 get 'login_choice', to: 'pages#login_choice'
 
-resources :courses
 
 
   # The priority is based upon order of creation: first created -> highest priority.

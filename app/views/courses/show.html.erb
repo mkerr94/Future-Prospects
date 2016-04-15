@@ -1,12 +1,12 @@
 <h1 align='center'><%= @course.title %></h2>
-<br>
 
 <div align='center'>
     <h3><%= link_to @course.college.name, college_path(@course.college) %></h4>
 </div>
-
+    <p align='center'><%= render @course.categories %></p>
 <br>
 <div class="well col-xs-10 col-xs-offset-1">
+
     <div class="article-main">
         <%= simple_format(@course.description) %>
     </div>
