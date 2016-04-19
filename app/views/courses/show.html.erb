@@ -1,4 +1,4 @@
-<h1 align='center'><%= @course.title %></h2>
+ <h1 align='center'><%= @course.title %></h2>
 
 <div align='center'>
     <h3><%= link_to @course.college.name, college_path(@course.college) %></h4>
@@ -20,4 +20,8 @@
         </div>
         <% end %>
     <br>
+</div>
+
+<divcl>
+    <%= link_to "Apply", root_path, class: "btn btn-primary" %>
 </div>

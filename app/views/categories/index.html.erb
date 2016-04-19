@@ -1,4 +1,7 @@
 <h1 align='center'>Categories</h1>
+<% if staff_signed_in? %>
+    <p align='center'><%= link_to "New Category", new_category_path, class: "btn btn-primary" %></p>
+<% end %>
 <hr>
 <div align='center'>
     <% @categories.each do |category| %>
