@@ -5,9 +5,10 @@
   padding-top: 50px;
 }
 
-a {
-    color: inherit;
+ul.nav li a, ul.nav li a:visited {
+    color: inherit !important;
 }
+
 .custom-form{
     padding-left: 20px;
 }
