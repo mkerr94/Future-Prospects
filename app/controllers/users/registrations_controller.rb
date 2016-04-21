@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
-
   def registration_params
       params.require(:user).permit(:email, :password, :password_confirmation, :forename, :surname, :perm_address, :perm_postcode, :term_address, :term_postcode, :phone_no, :highest_qualification_level, :highest_qualification_institution, :personal_statement)
   end

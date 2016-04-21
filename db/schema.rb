@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160421121656) do
+ActiveRecord::Schema.define(version: 20160421143336) do
 
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -94,12 +94,12 @@ ActiveRecord::Schema.define(version: 20160421121656) do
   add_index "staffs", ["reset_password_token"], name: "index_staffs_on_reset_password_token", unique: true
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                             default: "", null: false
-    t.string   "encrypted_password",                default: "", null: false
+    t.string   "email",                             default: "",    null: false
+    t.string   "encrypted_password",                default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                     default: 0,  null: false
+    t.integer  "sign_in_count",                     default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20160421121656) do
     t.string   "highest_qualification_level"
     t.string   "highest_qualification_institution"
     t.string   "personal_statement"
+    t.boolean  "applied",                           default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

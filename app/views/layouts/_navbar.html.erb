@@ -35,7 +35,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && !(current_user.applied == true)%>
           <li style="padding-right: 10px"><button type="button" class="btn btn-success navbar-btn"><%= link_to "Apply Now", new_application_path%></button></li>
         <% end %>
         <% if !user_signed_in? && !staff_signed_in? && !college_signed_in? %>
@@ -58,8 +58,12 @@
             <% end %>
 
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
+            <% if user_signed_in? && current_user.application.present? %>
+              <li><%= link_to "My Application", application_path(current_user.application) %></li>
+            <% end %>
+            <% if user_signed_in? %>
+              <li><%= link_to "Edit Account", edit_user_registration_path(current_user)%></li>
+            <% end %>
             <li><a href="#">Something else here</a></li>
             <li role="separator" class="divider"></li>
             <% if staff_signed_in? %>

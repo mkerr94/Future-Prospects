@@ -27,6 +27,58 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :forename %><br />
+    <%= f.text_field :forename %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :perm_address %><br />
+    <%= f.text_area :perm_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :perm_postcode %><br />
+    <%= f.text_field :perm_postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :term_address %><br />
+    <%= f.text_area :term_address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :term_postcode %><br />
+    <%= f.text_field :term_postcode %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone_no %><br />
+    <%= f.text_field :phone_no %>
+  </div>
+
+  <div class="field">
+    <%= f.label :highest_qualification_level %><br />
+    <%= f.text_field :highest_qualification_level %>
+  </div>
+
+  <div class="field">
+    <%= f.label :highest_qualification_institution %><br />
+    <%= f.text_field :highest_qualification_institution %>
+  </div>
+
+  <div class="field">
+    <%= f.label :personal_statement %><br />
+    <%= f.text_area :personal_statement %>
+  </div>
+
+
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

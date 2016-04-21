@@ -11,4 +11,8 @@ class Course < ActiveRecord::Base
     def self.search(search)
       where("title LIKE ?", "%#{search}%")
     end
+
+    def checkbox_name
+      "#{title}" + " at " + "#{college.name}"
+    end
 end
