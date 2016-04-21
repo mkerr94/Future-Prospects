@@ -1,0 +1,28 @@
+<div align='center'>
+  <h1>Applications</h1>
+  <hr>
+  <% @applications.each do |app| %>
+
+    <% @course_title = @courses.find(app.course_id) %>
+
+    Course: <%= link_to "#{@course_title.title}", course_path(@course_title) %>
+    <% @user_email = @user_applications.find(app.application_id) %>
+
+    <br>
+
+    Student Id: <%= @user_email.user_id %>
+    <% @user_result = @users.find(@user_email.user_id) %>
+
+    <br>
+
+    Student Email: <%= link_to "#{@user_result.email}", user_path(@user_result) %>
+
+    <br>
+    <br>
+
+    <%= link_to "Make Offer", root_path, class: "btn btn-sm btn-primary" %>
+    <%= link_to "Decline", root_path, class: "btn btn-sm btn-danger" %>
+
+    <hr>
+  <% end %>
+</div>
