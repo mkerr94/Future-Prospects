@@ -1,3 +1,10 @@
 <h1 align='center'>
     Home
 </h1>
+<hr>
+<br>
+<div align='center'>
+  <% if user_signed_in? %>
+  <%= link_to "Make an Application", root_path, class: "btn btn-primary btn-lg" %>
+  <% end %>
+</div>

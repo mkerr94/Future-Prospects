@@ -4,6 +4,18 @@
 
 <br>
 
+<div align='center'>
+  <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
+  <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+  <% end %>
+
+  <% if !(@courses.present?) %>
+    <p>There are no courses containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
+</div>
+
+
 <% if college_signed_in? %>
     <p align='center'><%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-primary" %></p>
 <% end %>
@@ -12,7 +24,7 @@
 <% @courses.each do |course| %>
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
-            <div class="well well-lg">
+            <div class="well well-sm">
                 <div align='center'>
                     <h4><%= link_to course.title, course_path(course) %></h4>
                     <small><%= link_to course.college.name, college_path(course.college)%></small>
@@ -32,6 +44,4 @@
             </div>
         </div>
     </div>
-
-
 <% end %>

@@ -1,4 +1,18 @@
 <h1 align='center'>Colleges</h1>
+
+<br>
+
+<div align='center'>
+  <%= form_tag(colleges_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Colleges" %>
+  <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
+  <% end %>
+
+  <% if !(@colleges.present?) %>
+    <p>There are no colleges containing the term(s) <%= params[:search] %>.</p>
+  <% end %>
+</div>
+
 <hr>
 
 <% @colleges.each do |college| %>

@@ -8,6 +8,11 @@ class CollegesController < ApplicationController
 
     def index
       @colleges = College.all
+      if params[:search]
+        @colleges = College.search(params[:search]).order("created_at DESC")
+      else
+        @colleges = College.all.order('created_at DESC')
+      end
     end
-    
+
 end
