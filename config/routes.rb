@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'applications/show'
+
+  get 'applications/create'
+
 devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
 resources :colleges, :only => [ :show, :index ]
 devise_for :staffs, :controllers => { :registrations => 'staffs/registrations' }
@@ -8,6 +12,7 @@ devise_for :users, :controllers => { :registrations => 'users/registrations' }
 resources :users, :only => [ :show, :index]
 resources :courses
 resources :categories, except: [:destroy]
+resources :applications
 
 root 'pages#home'
 get 'about', to: 'pages#about'

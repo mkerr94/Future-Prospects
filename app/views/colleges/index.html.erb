@@ -2,6 +2,9 @@
 
 <br>
 
+<hr>
+
+<% if @colleges.any? %>
 <div align='center'>
   <%= form_tag(colleges_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Colleges" %>
@@ -12,8 +15,9 @@
     <p>There are no colleges containing the term(s) <%= params[:search] %>.</p>
   <% end %>
 </div>
-
-<hr>
+<% else %>
+  <h3 align='center'>There are currently no colleges available</h3>
+<% end %>
 
 <% @colleges.each do |college| %>
     <ul>

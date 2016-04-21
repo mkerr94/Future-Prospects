@@ -8,11 +8,11 @@
   <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
   <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
-  <% end %>
-
   <% if !(@courses.present?) %>
     <p>There are no courses containing the term(s) <%= params[:search] %>.</p>
   <% end %>
+  <% end %>
+
 </div>
 
 
@@ -21,6 +21,9 @@
 <% end %>
 <hr>
 
+<% if !@courses.any? %>
+  <h3 align='center'>There are currently no courses available</h3>
+<% end %>
 <% @courses.each do |course| %>
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
