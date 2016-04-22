@@ -4,6 +4,11 @@
 
 <br>
 
+<% if college_signed_in? %>
+    <p align='center'><%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-primary" %></p>
+<% end %>
+<hr>
+
 <div align='center'>
   <%= form_tag(courses_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Courses" %>
@@ -15,11 +20,7 @@
 
 </div>
 
-
-<% if college_signed_in? %>
-    <p align='center'><%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-primary" %></p>
-<% end %>
-<hr>
+<br>
 
 <% if !@courses.any? %>
   <h3 align='center'>There are currently no courses available</h3>

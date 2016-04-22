@@ -19,6 +19,7 @@ get 'about', to: 'pages#about'
 get 'register_choice', to: 'pages#register_choice'
 get 'login_choice', to: 'pages#login_choice'
 get 'college_applications', to: 'colleges#college_applications'
+get 'college_courses', to: 'colleges#college_courses'
 
 
 
