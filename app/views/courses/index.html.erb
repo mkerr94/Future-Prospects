@@ -4,9 +4,14 @@
 
 <br>
 
-<% if college_signed_in? %>
-    <p align='center'><%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-primary" %></p>
-<% end %>
+<div align='center'>
+  <% if college_signed_in? %>
+    <%= link_to "Create new course", new_course_path, class: "btn btn-xs btn-primary" %>
+    <%= link_to "View My Courses", college_courses_path, class: "btn btn-xs btn-primary" %>
+  <% end %>
+
+</div>
+
 <hr>
 
 <div align='center'>

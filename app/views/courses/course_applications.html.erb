@@ -1,0 +1,13 @@
+<h1 align='center'><%= @course.title %> Applications</h1>
+<hr>
+
+<div align='center'>
+  <% @course_applications.each do |application| %>
+    <% @app_result = application.application %>
+    <% @student = @app_result.user %>
+    Student ID: <%= @student.id %> <br>
+    <p>Student Email: <%= @student.email %></p>
+    <p><%= link_to "View Profile", user_path(@student), class: "btn btn-primary" %></p>
+    <hr>
+  <% end %>
+</div>

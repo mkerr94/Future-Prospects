@@ -4,12 +4,13 @@
 <div align='center'>
   <div style='width: 400px'>
     <% @college_courses.each do |course| %>
-    <div class="panel panel-primary">
+    <div class="panel panel-default">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= link_to "#{course.title}", course_path(course) %></h3>
+        <h3 class="panel-title"><%= course.title %></h3>
       </div>
       <div class="panel-body">
-        <%= course.description %>
+        <%= link_to "View Details", course_path(course)%>  | 
+        <%= link_to "View Applications", {:controller => "courses", :action => "course_applications", :course => course.id }%>
       </div>
     </div>
     <% end %>
