@@ -7,7 +7,7 @@ class ApplicationsController < ApplicationController
   def show
     @user = current_user
     @application = Application.find(params[:id])
-    @courses = @application.courses
+    @courses = @application.courses    
   end
 
   def new

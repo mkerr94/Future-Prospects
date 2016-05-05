@@ -1,0 +1,24 @@
+<h1 align='center'>My Offers</h1>
+<br>
+<br>
+
+<div align='center'>
+  <div class="well well-sm" style="width: 50%">
+    <% @course_applications.each do |app| %>
+      <% if app.offer %>
+        From: <%= link_to app.offer.college.name, college_path(app.offer.college) %> <br>
+        To Study: <%= link_to app.course.title, course_path(app.course) %> <br>
+        Offer Type: <%= app.offer.offer_type %> <br>
+        Offer Details: <%= app.offer.details %>
+
+        <br>
+        <br>
+
+        <!-- TODO Code choice buttons -->
+        <%= link_to "Accept", root_path, class: "btn btn-primary btn-xs" %> |
+        <%= link_to "Decline", root_path, class: "btn btn-danger btn-xs" %>
+      <% end %>
+    <% end %>
+  </div>
+  <hr>
+</div>

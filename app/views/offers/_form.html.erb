@@ -1,0 +1,39 @@
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_for(@offer, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <% if @offer.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@offer.errors.count, "error") %> prohibited this offer from being saved:</h2>
+
+          <ul>
+          <% @offer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+          <div class="control-label col-sm-2">
+              <%= f.label :offer_type %>
+          </div>
+          <div class="col-sm-8">
+              <%= f.text_field :offer_type, class: "form-control", placeholder: "Type of offer", autofocus: true %>
+          </div>
+      </div>
+      <div class="form-group">
+          <div class="control-label col-sm-2">
+              <%= f.label :details %>
+          </div>
+          <div class="col-sm-8">
+              <%= f.text_field :details, class: "form-control"%>
+          </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <%= f.submit "Make Offer", class: 'btn btn-primary btn-ls'%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

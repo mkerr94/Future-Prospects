@@ -1,0 +1,13 @@
+<h1 align='center'>All of <%= current_college.name %>'s Offers</h1>
+
+<br>
+<br>
+
+<div align='center'>
+  <% @offers.each do |offer| %>
+  Student: <%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
+    Offer: <%= offer.offer_type %> <br>
+    Details: <%= offer.details %>
+  <% end %>
+
+</div>

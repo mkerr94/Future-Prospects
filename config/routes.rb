@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :offers
   get 'applications/show'
 
   get 'applications/create'
@@ -20,7 +21,9 @@ get 'register_choice', to: 'pages#register_choice'
 get 'login_choice', to: 'pages#login_choice'
 get 'college_applications', to: 'colleges#college_applications'
 get 'college_courses', to: 'colleges#college_courses'
+get 'college_offers', to: 'colleges#college_offers'
 get 'course_applications', to: 'courses#course_applications'
+get 'user_offers', to: 'users#user_offers'
 
 
 

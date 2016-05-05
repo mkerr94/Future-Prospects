@@ -17,11 +17,14 @@ class CollegesController < ApplicationController
 
     def college_applications
       if college_signed_in? && current_college.courses.any?
+        # All courses belonging to the current college
         @college_courses = current_college.courses
-        @applications = CourseApplication.where(course: @college_courses.where(college_id: current_college.id)).all
+        # All course applications to courses belonging to the current college
+        @college_course_applications = CourseApplication.where(course: @college_courses.where(college_id: current_college.id)).all
 
         @courses = Course.all
-        @user_applications = Application.all
+        # All applications in the database
+        @applications = Application.all
         @users = User.all
       end
     end
@@ -29,6 +32,12 @@ class CollegesController < ApplicationController
     def college_courses
       if college_signed_in? && current_college.courses.any?
         @college_courses = current_college.courses
+      end
+    end
+
+    def college_offers
+      if current_college.offers
+        @offers = current_college.offers
       end
     end
 

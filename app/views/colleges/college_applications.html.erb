@@ -1,28 +1,39 @@
 <div align='center'>
   <h1>Applications</h1>
   <hr>
-  <% @applications.each do |app| %>
 
-    <% @course_title = @courses.find(app.course_id) %>
+  <!-- For each course application attached to the current college do the following --->
+  <% @college_course_applications.each do |app| %>
+    <% if !app.offer %>
+      <!-- Finding the course of the the current course application -->
+      <% @course = @courses.find(app.course_id) %>
 
-    Course: <%= link_to "#{@course_title.title}", course_path(@course_title) %>
-    <% @user_email = @user_applications.find(app.application_id) %>
+      <!-- Displaying the course title, linking to the course page -->
+      Course: <%= link_to "#{@course.title}", course_path(@course) %>
 
-    <br>
+      <!-- Finding the application object attached to the course application -->
+      <% @application = @applications.find(app.application_id) %>
 
-    Student Id: <%= @user_email.user_id %>
-    <% @user_result = @users.find(@user_email.user_id) %>
+      <br>
 
-    <br>
+      <!-- Finding the user object attached to the application -->
+      <% @user = @users.find(@application.user_id) %>
 
-    Student Email: <%= link_to "#{@user_result.email}", user_path(@user_result) %>
+      <!-- Displaying the id of the attached student -->
+      Student Id: <%= @user.id %>
 
-    <br>
-    <br>
+      <br>
 
-    <%= link_to "Make Offer", root_path, class: "btn btn-sm btn-primary" %>
-    <%= link_to "Decline", root_path, class: "btn btn-sm btn-danger" %>
+      <!-- Displaying the email of the student -->
+      Student Email: <%= link_to "#{@user.email}", user_path(@user) %>
 
-    <hr>
+      <br>
+      <br>
+
+      <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-sm btn-primary" %>
+      <%= link_to "Decline", root_path, class: "btn btn-sm btn-danger" %>
+
+      <hr>
+    <% end %>
   <% end %>
 </div>

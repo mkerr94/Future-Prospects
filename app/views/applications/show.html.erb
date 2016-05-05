@@ -2,7 +2,7 @@
   <%= @user.forename %>'s Application
 </h1>
 
-<hr>
+<br>
 <br>
 
 <h4 align='center'>You applied to: </h4>
@@ -17,15 +17,13 @@
                     <br>
                     <br>
                     <p>Categories: <%= render course.categories if course.categories.any?%></p>
-                    <% if current_college == course.college %>
-                        <div class="course-actions">
-                            <%= link_to "Edit", edit_course_path(course), class: 'btn btn-xs btn-primary' %>
-                            <%= link_to "Delete", course_path(course), method: :delete,
-                                            data: {confirm: 'Are you sure you want to delete the course?'},
-                                            class: 'btn btn-xs btn-danger' %>
-                        </div>
+                    <!-- Display offers for the applied course if available -->
+                    <% if course.course_applications %>
+                      <% @user_course_application = course.course_applications.where(:application_id == @user.application.id).first %>
+                      <% if @user_course_application.offer %>
+                        <%= link_to "You have an offer", user_offers_path, class: "label label-success" %>
+                      <% end %>
                     <% end %>
-
                 </div>
             </div>
         </div>

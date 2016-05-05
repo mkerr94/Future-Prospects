@@ -48,12 +48,14 @@
           <ul class="dropdown-menu">
             <% if user_signed_in? && current_user.application.present? %>
               <li><%= link_to "My Application", application_path(current_user.application) %></li>
+              <li><%= link_to "My Offers", user_offers_path %></li>
             <% end %>
             <% if user_signed_in? %>
               <li><%= link_to "Edit Account", edit_user_registration_path(current_user)%></li>
             <% end %>
             <% if college_signed_in? %>
             <li><%= link_to "View All Applications", college_applications_path %></li>
+            <li><%= link_to "View All Offers", college_offers_path %></li>
             <li><%= link_to "My Courses", college_courses_path %></li>
             <% end %>
             <li role="separator" class="divider"></li>
@@ -67,6 +69,7 @@
                 <li><%= link_to "My Account", college_path(current_college)%></li>
             <% end %>
           </ul>
+
         </li>
         <% end %>
       </ul>
