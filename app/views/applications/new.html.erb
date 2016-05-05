@@ -1,11 +1,107 @@
 <h1 align='center'>Your Application</h1>
 <br>
-<hr>
+<br>
 
 <%= form_for(@application, :html => {class: "form-horizontal", role: "form"}) do |f| %>
   <div class="form-group">
       <div class="row">
           <div align='center'>
+            <div class="search-box">
+              Course 1:
+              <input id="textbox1" type="text" />
+            </div>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true}) %> <br> <hr>
+            <div class="search-box">
+              Course 2:
+              <input id="textbox2" type="text" />
+            </div>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_2"}) %> <br> <hr>
+            <div class="search-box">
+              Course 3:
+              <input id="textbox3" type="text" />
+            </div>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_3"}) %> <br> <hr>
+            <div class="search-box">
+              Course 4:
+              <input id="textbox4" type="text" />
+            </div>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_4"}) %> <br> <hr>
+            <div class="search-box">
+              Course 5:
+              <input id="textbox5" type="text" />
+            </div>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_5"}) %> <br>
+            <br>
+
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+            <script id="jsbin-javascript">
+
+            jQuery.fn.filterByText = function(textbox, selectSingleMatch) {
+                return this.each(function() {
+                    var select = this;
+                    var options = [];
+                    $(select).find('option').each(function() {
+                        options.push({value: $(this).val(), text: $(this).text()});
+                    });
+                    $(select).data('options', options);
+                    $(textbox).bind('change keyup', function() {
+                        var options = $(select).empty().data('options');
+                        var search = $(this).val().trim();
+                        var regex = new RegExp(search,"gi");
+
+                        $.each(options, function(i) {
+                            var option = options[i];
+                            if(option.text.match(regex) !== null) {
+                                $(select).append(
+                                   $('<option>').text(option.text).val(option.value)
+                                );
+                            }
+                        });
+                        if (selectSingleMatch === true && $(select).children().length === 1) {
+                            $(select).children().get(0).selected = true;
+                        }
+                    });
+                });
+            };
+
+            $(function() {
+                $('#application_course_ids').filterByText($('#textbox1'), false);
+              $("select option").click(function(){
+                alert(1);
+              });
+            });
+
+            $(function() {
+                $('#application_course_ids_2').filterByText($('#textbox2'), false);
+              $("select option").click(function(){
+                alert(1);
+              });
+            });
+
+            $(function() {
+                $('#application_course_ids_3').filterByText($('#textbox3'), false);
+              $("select option").click(function(){
+                alert(1);
+              });
+            });
+
+            $(function() {
+                $('#application_course_ids_4').filterByText($('#textbox4'), false);
+              $("select option").click(function(){
+                alert(1);
+              });
+            });
+
+            $(function() {
+                $('#application_course_ids_5').filterByText($('#textbox5'), false);
+              $("select option").click(function(){
+                alert(1);
+              });
+            });
+        </script>
+
+
+            <!--
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
             <br>
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
@@ -14,17 +110,19 @@
             <br>
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
             <br>
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%>
+            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> -->
+
           </div>
           <br>
       </div>
   </div>
   <div class="form-group">
-      <div class="col-sm-offset-4 col-sm-10">
-          <%= f.submit "Apply", class: 'btn btn-primary btn-lg'%>
+      <div align='center'>
+          <%= f.submit "Apply", class: 'btn btn-success btn-lg', style: "width:200px"%>
       </div>
   </div>
-  <div class="col-xs-offset-6">
+  <br>
+  <div align='center'>
       [ <%= link_to "Cancel", courses_path %> ]
   </div>
 <% end %>
