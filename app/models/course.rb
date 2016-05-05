@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
       where("title LIKE ?", "%#{search}%")
     end
 
-    def checkbox_name
-      "#{title}" + " at " + "#{college.name}"
+    def list_name
+      "#{title}" + " | " + "#{college.name}"
     end
 end
