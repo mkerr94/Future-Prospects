@@ -9,9 +9,8 @@
 <body>
 
 <%= render 'layouts/navbar' %>
-
+<%= flash_messages %>
 <div class="body-container">
-  <%= flash_messages %>
   <%= yield %>
 </div>
 

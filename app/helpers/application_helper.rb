@@ -14,4 +14,10 @@ module ApplicationHelper
       nil
     end
 
+    def gravatar_for(college, options = { size: 80} )
+      gravatar_id = Digest::MD5.hexdigest(college.email)
+      gravatar_url = "http://secure.gravatar.com/avatar/#{gravatar_id}?s=#{options[:size]}"
+      image_tag(gravatar_url, alt: college.name, class:"img-circle")
+    end
+
 end

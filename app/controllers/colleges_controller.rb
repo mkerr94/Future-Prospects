@@ -15,6 +15,10 @@ class CollegesController < ApplicationController
       end
     end
 
+    def edit
+      @college = College.find(params[:id])
+    end
+
     def college_applications
       if college_signed_in? && current_college.courses.any?
         # All courses belonging to the current college
