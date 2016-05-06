@@ -109,14 +109,15 @@
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
             <br>
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
-            <br>
+            <br>'atom-workspace':
+  'ctrl-alt-o': 'activate-power-mode:toggle'
             <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> -->
 
           </div>
           <br>
       </div>
   </div>
-  <div class="form-group">
+  <div class="form-group"
       <div align='center'>
           <%= f.submit "Apply", class: 'btn btn-success btn-lg', style: "width:200px"%>
       </div>

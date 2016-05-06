@@ -24,6 +24,7 @@ get 'college_courses', to: 'colleges#college_courses'
 get 'college_offers', to: 'colleges#college_offers'
 get 'course_applications', to: 'courses#course_applications'
 get 'user_offers', to: 'users#user_offers'
+get 'accept_offer', to: 'offers#accept'
 
 
 

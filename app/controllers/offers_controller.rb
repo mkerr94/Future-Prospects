@@ -58,6 +58,16 @@ class OffersController < ApplicationController
     end
   end
 
+  def accept
+    @offer = Offer.find(params[:offer])
+    @offer.status = "Accepted"
+    @offer.save
+
+    @user = @offer.course_application.application.user
+    @user.has_accepted_offer = true
+    @user.save
+  end
+
   private
 
     def set_offer

@@ -15,8 +15,13 @@
         <br>
 
         <!-- TODO Code choice buttons -->
-        <%= link_to "Accept", root_path, class: "btn btn-primary btn-xs" %> |
-        <%= link_to "Decline", root_path, class: "btn btn-danger btn-xs" %>
+        <% if app.offer.status != "Accepted" %>
+          <%= link_to "Accept", accept_offer_path(:offer => app.offer.id), class: "btn btn-primary btn-xs" %> |
+          <%= link_to "Decline", root_path, class: "btn btn-danger btn-xs" %>
+          <% else %>
+          <span class="label label-danger">You have already accepted an offer</span>
+        <% end %>
+
       <% end %>
     <% end %>
   </div>

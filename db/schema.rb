@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160505160317) do
+ActiveRecord::Schema.define(version: 20160506020707) do
 
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -72,10 +72,11 @@ ActiveRecord::Schema.define(version: 20160505160317) do
   create_table "offers", force: :cascade do |t|
     t.string   "offer_type"
     t.string   "details"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.integer  "college_id"
     t.integer  "course_application_id"
+    t.string   "status",                default: "Awaiting Decision"
   end
 
   create_table "staffs", force: :cascade do |t|
@@ -129,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160505160317) do
     t.string   "highest_qualification_institution"
     t.string   "personal_statement"
     t.boolean  "applied",                           default: false
+    t.boolean  "has_accepted_offer",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

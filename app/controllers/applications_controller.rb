@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  before_action :validate_user, only: [:new, :create] # prevent users from making multiple applications
 
   def index
     @applications = Application.all
@@ -7,7 +8,7 @@ class ApplicationsController < ApplicationController
   def show
     @user = current_user
     @application = Application.find(params[:id])
-    @courses = @application.courses    
+    @courses = @application.courses
   end
 
   def new
@@ -32,6 +33,14 @@ class ApplicationsController < ApplicationController
   private
   def application_params
     params.require(:application).permit(:user, course_ids: [])
+  end
+
+  # Redirect user if they have already made an application
+  def validate_user
+    if current_user.applied == true
+      flash[:error] = "You have already made an application"
+      redirect_to root_path
+    end
   end
 
 end
