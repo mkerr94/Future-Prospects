@@ -117,11 +117,19 @@
           <br>
       </div>
   </div>
+  <% if current_user.has_paid %>
   <div class="form-group"
       <div align='center'>
           <%= f.submit "Apply", class: 'btn btn-success btn-lg', style: "width:200px"%>
       </div>
   </div>
+  <% else %>
+  <div class="form-group">
+    <div align='center'>
+      <%= link_to "Make Payment", new_order_path, class: "btn btn-success btn-lg", style: "width:200px" %>
+    </div>
+  </div>
+  <% end %>
   <br>
   <div align='center'>
       [ <%= link_to "Cancel", courses_path %> ]

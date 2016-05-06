@@ -14,6 +14,7 @@ resources :users, :only => [ :show, :index]
 resources :courses
 resources :categories, except: [:destroy]
 resources :applications
+resource :order
 
 root 'pages#home'
 get 'about', to: 'pages#about'
