@@ -1,9 +1,18 @@
-<h1 align='center'>All of <%= current_college.name %>'s Offers</h1>
+<%= render 'college_header' %>
 
-<br>
+<h3 class="subheading">All Offers</h3>
 <br>
 
 <div align='center'>
+  <% if @offers.count == 0 %>
+  <div class="content-container">
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      You have not made any offers yet
+    </div>
+  </div>
+  <% end %>
   <% @offers.each do |offer| %>
   Student: <%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
     Offer: <%= offer.offer_type %> <br>

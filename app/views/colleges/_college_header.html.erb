@@ -1,0 +1,10 @@
+<div align='center'>
+  <% if college_signed_in? %>
+    <% @college = current_college %>
+  <% end %>
+  <%= gravatar_for(@college, size: 130) %>
+</div>
+
+<h1 align='center'><%= @college.name %></h1>
+
+<br>

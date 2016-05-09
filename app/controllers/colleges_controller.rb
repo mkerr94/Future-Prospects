@@ -7,12 +7,7 @@ class CollegesController < ApplicationController
     end
 
     def index
-      @colleges = College.all
-      if params[:search]
-        @colleges = College.search(params[:search]).order("created_at DESC")
-      else
-        @colleges = College.all.order('created_at DESC')
-      end
+      @colleges = College.search(params[:search]).paginate(:page => params[:page], :per_page => 9).order(:name)
     end
 
     def edit

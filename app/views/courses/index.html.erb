@@ -3,14 +3,23 @@
     <%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-warning" %> |
     <%= link_to "View My Courses", college_courses_path, class: "btn btn-sm btn-warning" %>
   <% end %>
-
 </div>
 
 <br>
+<script>
+$("#courses .pagination a").delegate("click", function() {
+  $.getScript(this.href);
+  return false;
+});
+$("#courses_search input").keyup(function() {
+  $.get($("#courses_search").attr("action"), $("#courses_search").serialize(), null, "script");
+  return false;
+});
+</script>
 
 <div align='center'>
   <%= form_tag(courses_path, :method => "get", id: "courses_search", class: "navbar-form search-form") do %>
-    <%= text_field_tag :search, params[:search], placeholder: "Search Courses", style: "width:400px", class: "form-control" %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Courses", autofocus: true, style: "width:400px", class: "form-control" %>
     <%= button_tag "", type: 'submit', class: "btn btn-default glyphicon glyphicon-search", style: "width: 60px; height: 35px" %>
   <% end %>
 </div>

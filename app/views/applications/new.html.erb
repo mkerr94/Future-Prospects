@@ -1,37 +1,57 @@
-<h1 align='center'>Your Application</h1>
-<br>
-<br>
+
 
 <%= form_for(@application, :html => {class: "form-horizontal", role: "form"}) do |f| %>
   <div class="form-group">
-      <div class="row">
-          <div align='center'>
-            <div class="search-box">
-              Course 1:
-              <input id="textbox1" type="text" />
+          <div class="application-container">
+            <h3 style="font-family:avenir-light; padding-left:15px">First Choice</h3>
+            <div class="col-sm-6">
+              <div class="search-box"></div>
+              <input id="textbox1" type="text" placeholder="1st Course" class="form-control" style="width: 200px" />
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, class: "list-group"}) %> <br> <hr>
-            <div class="search-box">
-              Course 2:
-              <input id="textbox2" type="text" />
+            <div class="col-sm-6">
+              <%= select(:application, :course_ids, options_from_collection_for_select(Course.all.order(:title), :id, :list_name), {}, {:multiple => true, style: "height: 200px"}) %>
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_2"}) %> <br> <hr>
-            <div class="search-box">
-              Course 3:
-              <input id="textbox3" type="text" />
+          </div>
+          <div class="application-container">
+            <h3 style="font-family:avenir-light; padding-left:15px">Second Choice</h3>
+            <div class="col-sm-6">
+              <div class="search-box"></div>
+              <input id="textbox2" type="text" placeholder="2nd Course" class="form-control" style="width: 200px" />
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_3"}) %> <br> <hr>
-            <div class="search-box">
-              Course 4:
-              <input id="textbox4" type="text" />
+            <div class="col-sm-6">
+              <%= select(:application, :course_ids, options_from_collection_for_select(Course.all.order(:title), :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_2", style: "height: 200px"}) %>
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_4"}) %> <br> <hr>
-            <div class="search-box">
-              Course 5:
-              <input id="textbox5" type="text" />
+          </div>
+          <div class="application-container">
+            <h3 style="font-family:avenir-light; padding-left:15px">Third Choice</h3>
+            <div class="col-sm-6">
+              <div class="search-box"></div>
+              <input id="textbox3" type="text" placeholder="3rd Course" class="form-control" style="width: 200px" />
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_5"}) %> <br>
-            <br>
+            <div class="col-sm-6">
+              <%= select(:application, :course_ids, options_from_collection_for_select(Course.all.order(:title), :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_3", style: "height: 200px"}) %>
+            </div>
+          </div>
+          <div class="application-container">
+            <h3 style="font-family:avenir-light; padding-left:15px">Fourth Choice</h3>
+            <div class="col-sm-6">
+              <div class="search-box"></div>
+              <input id="textbox4" type="text" placeholder="4th Course" class="form-control" style="width: 200px" />
+            </div>
+            <div class="col-sm-6">
+              <%= select(:application, :course_ids, options_from_collection_for_select(Course.all.order(:title), :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_4", style: "height: 200px"}) %>
+            </div>
+          </div>
+          <div class="application-container">
+            <h3 style="font-family:avenir-light; padding-left:15px">Fifth Choice</h3>
+            <div class="col-sm-6">
+              <div class="search-box"></div>
+              <input id="textbox5" type="text" placeholder="5th Course" class="form-control" style="width: 200px" />
+            </div>
+            <div class="col-sm-6">
+              <%= select(:application, :course_ids, options_from_collection_for_select(Course.all.order(:title), :id, :list_name), {}, {:multiple => true, :id => "application_course_ids_5", style: "height: 200px"}) %>
+            </div>
+          </div>
 
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
             <script id="jsbin-javascript">
@@ -85,23 +105,11 @@
             });
         </script>
 
-
-            <!--
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
-            <br>
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
-            <br>
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
-            <br>
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> <br>
-            <br>'atom-workspace':
-  'ctrl-alt-o': 'activate-power-mode:toggle'
-            <%= collection_select(:application, :course_ids, Course.all, :id, :list_name, {}, { :multiple => true, class: "custom-list", style: "height:123px"} )%> -->
-
-          </div>
-          <br>
-      </div>
   </div>
+
+  <br>
+  <hr>
+
   <% if current_user.has_paid %>
   <div class="form-group"
       <div align='center'>

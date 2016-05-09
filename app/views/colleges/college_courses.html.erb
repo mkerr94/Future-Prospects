@@ -1,18 +1,30 @@
-<h1 align='center'><%= current_college.name %>'s Courses</h1>
-<hr>
+<%= render 'college_header' %>
+
+<h3 class="subheading">All Courses</h3>
+
 <br>
-<div align='center'>
-  <div style='width: 400px'>
-    <% @college_courses.each do |course| %>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= course.title %></h3>
-      </div>
-      <div class="panel-body">
-        <%= link_to "View Details", course_path(course)%>  | 
-        <%= link_to "View Applications", {:controller => "courses", :action => "course_applications", :course => course.id }%>
-      </div>
-    </div>
-    <% end %>
-  </div>
+
+<div class="content-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Categories</th>
+        <th>Applications</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @college_courses.each do |course| %>
+          <tr>
+            <td><%= link_to "#{course.title}", course_path(course) %></td>
+            <td>
+              <% course.categories.each do |cat| %>
+                <%= link_to cat.name, category_path(cat) %>
+              <% end %>
+            </td>
+            <td><%= link_to course.course_applications.count, {:controller => "courses", :action => "course_applications", :course => course.id } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
 </div>

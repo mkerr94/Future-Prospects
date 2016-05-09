@@ -1,4 +1,5 @@
 class ApplicationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :validate_user, only: [:new, :create] # prevent users from making multiple applications
 
   def index

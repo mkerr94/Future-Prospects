@@ -1,0 +1,20 @@
+<div class="grid-container">
+  <% @colleges.each_slice(3) do |colleges| %>
+    <div class="row">
+      <% colleges.each do |college| %>
+        <div class="col-md-4">
+          <div align='center'>
+            <%= gravatar_for college, size: 80 %>
+            <br>
+            <div class="img-subtitle">
+              <%= link_to college.name, college_path(college)%>
+            </div>
+            <br>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div align='center'><%= will_paginate @colleges %></div>
