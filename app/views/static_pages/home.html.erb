@@ -1,0 +1,47 @@
+<div class="overlay"><h1>Welcome to Future Prospects</h1></div>
+<div class="carousel-container">
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+         <%= image_tag("img2.jpg", width: '100%', alt: 'Slide1', class: "img-responsive" ) %>
+        <div class="carousel-caption">
+          <h3>For Students</h3>
+          <p>Details of Slide 1. Lorem Ipsum Blah Blah Blah....</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <%= image_tag("img1.jpg", width: '100%', alt: 'Slide1', class: "img-responsive" ) %>
+        <div class="carousel-caption">
+          <h3>For Universities</h3>
+        </div>
+
+      </div>
+
+      <div class="item">
+        <%= image_tag("img4.jpg", width: '100%', alt: 'Slide1', class: "img-responsive" ) %>
+        <div class="carousel-caption">
+          <h3>Decide Your Future</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+  </div>
+</div>

@@ -1,18 +1,50 @@
-<h1><%= @college.name %></h1>
+<div align='center' class="page-title">
+  <%= gravatar_for(@college, size: 200) %>
+  <h1><%= @college.name %></h1>
+</div>
 
-<ul>
-    <li><%= @college.email %></li>
-    <li><%= @college.description %></li>
-    <li><%= @college.address %></li>
-    <li><%= @college.phone_no %></li>
-</ul>
+
+<hr width="600px">
+
+<div class="subheading">
+  <h3>Details</h3>
+</div>
+
+<div class="content-container">
+  <strong>Email: </strong> <%= @college.email %> <br>
+  <strong>Phone: </strong> <%= @college.phone_no %> <br>
+  <strong>Address: </strong> <%= @college.address %> <br>
+  <br>
+  <%= @college.description %>
+</div>
 
 <br>
-<hr>
 
-<h3>All Courses</h3>
-<% @courses.each do |course| %>
-    <ul>
-        <li><%= link_to course.title, course_path(course) %></li>
-    </ul>
-<% end %>
+<div class="subheading">
+  <h3>Course List</h3>
+</div>
+
+<div class="content-container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Categories</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= link_to course.title, course_path(course)%></td>
+            <td><%= course.description %></td>
+            <td>
+              <% course.categories.each do |cat| %>
+                <%= cat.name %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table>
+</div>

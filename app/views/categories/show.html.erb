@@ -1,17 +1,32 @@
 <h2 align='center'><%= @category.name %></h2>
 <hr>
 
-<% @category_courses.each do |course| %>
+<div class="grid-container">
+  <% @category_courses.each_slice(3) do |courses| %>
     <div class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-            <div class="well">
-                <div align='center'>
-                    <h4><%= link_to course.title, course_path(course) %></h4>
-                    <h6><%= link_to course.college.name, college_path(course.college) %></h6>
-                    <hr>
-                    <p><%= truncate(course.description, length: 500) %></p>
-                </div>
-            </div>
+      <% courses.each do |course| %>
+        <div class="col-md-4">
+          <div class="well well-sm">
+            <div align='center'>
+              <h4><%= link_to course.title, course_path(course) %></h4>
+                <%= gravatar_for course.college, size: 50 %>
+                <br>
+                <small><%= link_to course.college.name, college_path(course.college)%></small>
+              <br>
+              <p>Categories: <%= render course.categories if course.categories.any?%></p>
+              <% if current_college == course.college %>
+                  <div class="course-actions">
+                      <%= link_to "Edit", edit_course_path(course), class: 'btn btn-xs btn-primary' %>
+                      <%= link_to "Delete", course_path(course), method: :delete,
+                                      data: {confirm: 'Are you sure you want to delete the course?'},
+                                      class: 'btn btn-xs btn-danger' %>
+                  </div>
+              <% end %>
+          </div>
         </div>
+        <br>
+      </div>
+      <% end %>
     </div>
-<% end %>
+  <% end %>
+</div>

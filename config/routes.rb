@@ -16,10 +16,10 @@ resources :categories, except: [:destroy]
 resources :applications
 resource :order
 
-root 'pages#home'
-get 'about', to: 'pages#about'
-get 'register_choice', to: 'pages#register_choice'
-get 'login_choice', to: 'pages#login_choice'
+root 'static_pages#home'
+get 'about', to: 'static_pages#about'
+get 'register_choice', to: 'static_pages#register_choice'
+get 'login_choice', to: 'static_pages#login_choice'
 get 'college_applications', to: 'colleges#college_applications'
 get 'college_courses', to: 'colleges#college_courses'
 get 'college_offers', to: 'colleges#college_offers'

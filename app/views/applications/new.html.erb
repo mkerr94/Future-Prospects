@@ -10,7 +10,7 @@
               Course 1:
               <input id="textbox1" type="text" />
             </div>
-            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true}) %> <br> <hr>
+            <%= select(:application, :course_ids, options_from_collection_for_select(Course.all, :id, :list_name), {}, {:multiple => true, class: "list-group"}) %> <br> <hr>
             <div class="search-box">
               Course 2:
               <input id="textbox2" type="text" />

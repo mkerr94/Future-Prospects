@@ -16,3 +16,14 @@
 //= require turbolinks
 //= require braintree
 //= require_tree .
+
+$(function() {
+  $("#courses .pagination a").delegate("click", function() {
+    $.getScript(this.href);
+    return false;
+  });
+  $("#courses_search input").keyup(function() {
+    $.get($("#courses_search").attr("action"), $("#courses_search").serialize(), null, "script");
+    return false;
+  });
+});

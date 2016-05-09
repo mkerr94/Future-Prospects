@@ -6,13 +6,22 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background-color: #F2F2F2">
 
 <%= render 'layouts/navbar' %>
-<%= flash_messages %>
-<div class="body-container">
-  <%= yield %>
+<div style="padding-top:50px">
+  <%= flash_messages %>
 </div>
+
+  <% if current_page?(root_path) || current_page?(about_path)%>
+    <%= yield %>
+  <% else %>
+    <div class="body-container">
+      <%= yield %>
+    </div>
+  <% end %>
+
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>

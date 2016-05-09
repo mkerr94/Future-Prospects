@@ -1,17 +1,151 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+    background-color: #FFFFFF;
+    font-family: "avenir";
+}
+
+a{
+  color: #607D8B;
+}
+
+a:hover{
+  color: #D32F2F;
+}
+
 .body-container{
-  padding-top: 70px;
+  padding-top: 50px;
+}
+
+.paragraph{
+  font-size: 1.3em;
+  font-family: "avenir-light";
+}
+
+.header-img{
+  width: 20%;
+  height: 20%;
+}
+
+.page-title {
+  font-family: "avenir";
+}
+
+.subheading{
+  padding-left: 170px;
+  padding-bottom: 5px;
+  font-family: "avenir-light";
+}
+
+.img-subtitle{
+  padding-top: 5px;
+}
+
+.content-container{
+  padding-left: 170px;
+  padding-right: 170px;
+  font-family: "avenir";
+}
+
+.grid-container{
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 ul.nav li a, ul.nav li a:visited {
     color: inherit !important;
 }
 
+.navbar-default {
+    background-color: #D32F2F;
+    border-color: #D32F2F;
+}
+
+/* link */
+.navbar-default .navbar-nav > li {
+    color: #FFFFFF;
+    font-family: "avenir"
+
+}
+
+.navbar{height:70px;  padding-top: 10px;}
+
+
+.navbar-default .navbar-nav > li:hover,
+.navbar-default .navbar-nav > li:focus {
+    color: #607D8B;
+}
+
+.navbar-brand {
+  padding: 5px; /* firefox bug fix */
+}
+
+.navbar-brand>p {
+  padding-top: 5px;
+}
+
+.navbar-brand>img {
+  height: 50%;
+  padding: 15px; /* firefox bug fix */
+}
+
 .centered-panel{
   padding-left: 300px;
   width: 20%;
+}
+
+.overlay {
+  color: #F0EEED;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+  position: absolute;
+  z-index:12;
+  top:40%;
+  left:0;
+  width:100%;
+  text-align:center;
+}
+
+.carousel-caption
+{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: #fff;
+  text-align: center;
+  background: rgba(0,0,0,0.4);
+}
+
+.carousel-indicators{
+  bottom: -35px;
+}
+
+.carousel-indicators li{
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	margin: 1px;
+	text-indent: -999px;
+	cursor: pointer;
+	background-color: #000\9;
+	background-color: rgba(0,0,0,0);
+	border: 1px solid #B1B2B3;
+	border-radius: 50%;
+	}
+
+.carousel-indicators .active{
+	width: 12px;
+	height: 12px;
+	margin: 0;
+	background-color: #B1B2B3;
+}
+
+.carousel-container{
+  padding-top: -80px;
 }
 
 .payment-form{
@@ -48,6 +182,11 @@ ul.nav li a, ul.nav li a:visited {
 .article-title {
     font-weight: 700;
     font-size: 1.5em;
+}
+
+.course-main{
+  font-family: "avenir";
+
 }
 
 .listing {

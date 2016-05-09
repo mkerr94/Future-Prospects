@@ -1,28 +1,61 @@
-<h1 align='center'>Colleges</h1>
+<% if @colleges.any? %>
+  <div align='center'>
+    <%= form_tag(colleges_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Colleges", style: "width:400px" %>
+    <%= button_tag "", type: 'submit', class: "btn btn-default glyphicon glyphicon-search", style: "width: 60px; height: 35px" %>
+    <% end %>
+
+    <% if !(@colleges.present?) %>
+      <p>There are no colleges containing the term(s) <%= params[:search] %>.</p>
+    <% end %>
+  </div>
+  <% else %>
+    <h3 align='center'>There are currently no colleges available</h3>
+<% end %>
 
 <br>
+<br>
 
-<hr>
-
-<% if @colleges.any? %>
-<div align='center'>
-  <%= form_tag(colleges_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Search Colleges" %>
-  <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
-  <% end %>
-  
-  <% if !(@colleges.present?) %>
-    <p>There are no colleges containing the term(s) <%= params[:search] %>.</p>
+<div class="grid-container">
+  <% @colleges.each_slice(3) do |colleges| %>
+    <div class="row">
+      <% colleges.each do |college| %>
+        <div class="col-md-4">
+          <div align='center'>
+            <%= gravatar_for college, size: 80 %>
+            <br>
+            <div class="img-subtitle">
+              <%= link_to college.name, college_path(college)%>
+            </div>
+            <br>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
-<% else %>
-  <h3 align='center'>There are currently no colleges available</h3>
-<% end %>
 
-<% @colleges.each do |college| %>
-    <ul>
-        <li>
-            <%= link_to college.name, college_path(college)%>
-        </li>
-    </ul>
-<% end %>
+
+
+<!-- <div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Number of Courses</th>
+      </tr>
+    </thead>
+      <tbody>
+        <% @colleges.each do |college| %>
+          <tr>
+            <td><%= link_to college.name, college_path(college)%></td>
+            <td><%= college.email %></td>
+            <td><%= college.courses.count %></td>
+          </tr>
+        <% end %>
+      </tbody>
+  </table> -->
+  
+</div>

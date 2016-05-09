@@ -1,0 +1,30 @@
+<div class="grid-container">
+  <% @courses.each_slice(3) do |courses| %>
+    <div class="row">
+      <% courses.each do |course| %>
+        <div class="col-md-4">
+          <div class="well well-sm">
+            <div align='center'>
+              <h4 style="font-family: avenir-light"><%= link_to course.title, course_path(course) %></h4>
+                <%= gravatar_for course.college, size: 50 %>
+                <br>
+                <small><%= link_to course.college.name, college_path(course.college)%></small>
+              <br>
+              <p>Categories: <%= render course.categories if course.categories.any?%></p>
+              <% if current_college == course.college %>
+                  <div class="course-actions">
+                      <%= link_to "Edit", edit_course_path(course), class: 'btn btn-xs btn-primary' %>
+                      <%= link_to "Delete", course_path(course), method: :delete,
+                                      data: {confirm: 'Are you sure you want to delete the course?'},
+                                      class: 'btn btn-xs btn-danger' %>
+                  </div>
+              <% end %>
+          </div>
+        </div>
+        <br>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+<div align='center'><%= will_paginate @courses %></div>
