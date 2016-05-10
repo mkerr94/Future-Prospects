@@ -67,19 +67,37 @@
       </div>
 
       <div class="field">
-        <%= f.label "Enter the ID number of your referee" %><br />
+        <%= f.label :referee_id, "Enter the ID number of your referee" %><br />
         <%= f.number_field :referee_id %>
       </div>
 
       <div class="field">
         <%= f.label :personal_statement %><br />
-        <%= f.text_area :personal_statement %>
+        <%= f.text_area :personal_statement, size: "100x20", maxlength: 5000, id: 'personal_statement' %> <br>
+
+
+          Characters remaining: <span id="counter" data-maximum-length="5000">5000</span>
+
+        <script>
+            $(document).ready(function() {
+              var personal_statement = $("#personal_statement");
+              var counter     = $("#counter");
+              var max_length  = counter.data("maximum-length");
+
+              personal_statement.keyup(function() {
+                  counter.text(max_length - $(this).val().length);
+              });
+
+            });
+        </script>
       </div>
 
+      <br>
+
       <div class="actions">
-        <%= f.submit "Sign up" %>
+        <%= f.submit "Sign up", class: "btn btn-success" %>
       </div>
-    <% end %>
+    <% end %> <br>
 
     <%= render "users/shared/links" %>
 </div>

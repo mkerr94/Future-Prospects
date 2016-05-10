@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates :personal_statement, length: { maximum: 5000 }
+
   has_one :application, dependent: :destroy
   belongs_to :referee
 end
