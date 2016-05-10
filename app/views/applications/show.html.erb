@@ -5,6 +5,20 @@
 <br>
 <br>
 
+<% if @user.has_accepted_offer %>
+<div class="content-container">
+  <h3>
+    Congratulations!
+  </h3>
+  <p>
+    You have accepted the following offer
+  </p>
+  <% @accepted_course_application.each do |app| %>
+    <%= app.offer.details %>
+  <% end %>
+</div>
+
+<% else %>
 <h4 align='center'>You applied to: </h4>
 <br>
 <% @courses.each do |course| %>
@@ -28,4 +42,5 @@
             </div>
         </div>
     </div>
+<% end %>
 <% end %>

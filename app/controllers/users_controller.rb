@@ -12,6 +12,5 @@ class UsersController < ApplicationController
       @user = current_user
       @application = current_user.application
       @course_applications = @application.course_applications
-      @offers
     end
 end

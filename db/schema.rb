@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506112220) do
+ActiveRecord::Schema.define(version: 20160510103000) do
 
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -50,8 +50,9 @@ ActiveRecord::Schema.define(version: 20160506112220) do
   create_table "course_applications", force: :cascade do |t|
     t.integer  "course_id"
     t.integer  "application_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "status",         default: "In Progress"
   end
 
   create_table "course_categories", force: :cascade do |t|

@@ -36,8 +36,7 @@ class OffersController < ApplicationController
   def edit
   end
 
-  # PATCH/PUT /offers/1
-  # PATCH/PUT /offers/1.json
+
   def update
     respond_to do |format|
       if @offer.update(offer_params)
@@ -59,10 +58,17 @@ class OffersController < ApplicationController
   end
 
   def accept
+    # Creating offer and saving new status
     @offer = Offer.find(params[:offer])
     @offer.status = "Accepted"
     @offer.save
 
+    # Updating status of application to complete
+    @course_application = @offer.course_application
+    @course_application.status = "Completed"
+    @course_application.save
+
+    # Updating user status having accepted an offer
     @user = @offer.course_application.application.user
     @user.has_accepted_offer = true
     @user.save

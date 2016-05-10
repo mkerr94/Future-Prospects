@@ -10,6 +10,8 @@ class ApplicationsController < ApplicationController
     @user = current_user
     @application = Application.find(params[:id])
     @courses = @application.courses
+    @accepted_course_application = @application.course_applications.where(status: "Completed")
+    
   end
 
   def new

@@ -14,9 +14,10 @@
   </div>
   <% end %>
   <% @offers.each do |offer| %>
-  Student: <%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
-    Offer: <%= offer.offer_type %> <br>
-    Details: <%= offer.details %>
+  <strong>Student: </strong><%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
+    <strong>Offer: </strong><%= offer.offer_type %> <br>
+    <strong>Details: </strong><%= offer.details %> <br>
+    <strong>Status: </strong><%= offer.status %>
   <% end %>
 
 </div>
