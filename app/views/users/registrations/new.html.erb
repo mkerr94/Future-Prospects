@@ -1,6 +1,5 @@
-<div class="custom-form">
-    <h2>Sign up Student</h2>
-
+<br><h3 class="subheading">Sign up Student</h3> <br>
+<div class="content-container">
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
@@ -65,6 +64,11 @@
       <div class="field">
         <%= f.label :highest_qualification_institution %><br />
         <%= f.text_field :highest_qualification_institution %>
+      </div>
+
+      <div class="field">
+        <%= f.label "Enter the ID number of your referee" %><br />
+        <%= f.number_field :referee_id %>
       </div>
 
       <div class="field">

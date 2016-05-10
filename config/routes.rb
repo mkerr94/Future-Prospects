@@ -5,10 +5,11 @@ Rails.application.routes.draw do
 
   get 'applications/create'
 
+
+devise_for :referees, :controllers => { :registrations => 'referees/registrations' }
 devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
+resources :referees
 resources :colleges, :only => [ :show, :index ]
-devise_for :staffs, :controllers => { :registrations => 'staffs/registrations' }
-resources :staffs, :only => [ :show ]
 devise_for :users, :controllers => { :registrations => 'users/registrations' }
 resources :users, :only => [ :show, :index]
 resources :courses
@@ -26,6 +27,7 @@ get 'college_offers', to: 'colleges#college_offers'
 get 'course_applications', to: 'courses#course_applications'
 get 'user_offers', to: 'users#user_offers'
 get 'accept_offer', to: 'offers#accept'
+get 'referee_applications', to: 'referees#referee_applications'
 
 
 

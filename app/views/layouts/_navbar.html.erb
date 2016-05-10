@@ -19,7 +19,7 @@
         <li><%= link_to "Courses", courses_path%></li>
         <li><%= link_to "Colleges", colleges_path %></li>
         <li><%= link_to "Categories", categories_path %></li>
-        <% if staff_signed_in? %>
+        <% if college_signed_in? %>
             <li><%= link_to "Students", users_path%></li>
         <% end %>
       </ul>
@@ -27,20 +27,20 @@
         <% if user_signed_in? && !(current_user.applied == true)%>
           <li style="padding-right: 10px"><button type="button" class="btn btn-warning navbar-btn" ><%= link_to "Apply Now", new_application_path%></button></li>
         <% end %>
-        <% if !user_signed_in? && !staff_signed_in? && !college_signed_in? %>
+        <% if !user_signed_in? && !referee_signed_in? && !college_signed_in? %>
             <li><%= link_to "Login", login_choice_path%></li>
             <li><%= link_to "Register", register_choice_path %></li>
         <% else %>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete%></li>
         <% end %>
 
-        <% if user_signed_in? || staff_signed_in? || college_signed_in? %>
+        <% if user_signed_in? || referee_signed_in? || college_signed_in? %>
         <li class="dropdown">
             <% if user_signed_in? %>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Student Account <span class="caret"></span></a>
             <% end %>
-            <% if staff_signed_in? %>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Staff Account <span class="caret"></span></a>
+            <% if referee_signed_in? %>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Referee Account <span class="caret"></span></a>
             <% end %>
             <% if college_signed_in? %>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My College Account <span class="caret"></span></a>
@@ -50,6 +50,9 @@
             <% if user_signed_in? && current_user.application.present? %>
               <li><%= link_to "My Application", application_path(current_user.application) %></li>
               <li><%= link_to "My Offers", user_offers_path %></li>
+            <% end %>
+            <% if referee_signed_in? %>
+              <li><%= link_to "My Applications", referee_applications_path%></li>
             <% end %>
             <% if user_signed_in? %>
               <li><%= link_to "Edit Account", edit_user_registration_path(current_user)%></li>
@@ -61,8 +64,8 @@
             <li><%= link_to "Edit Account", edit_college_registration_path(current_college) %></li>
             <% end %>
             <li role="separator" class="divider"></li>
-            <% if staff_signed_in? %>
-                <li><%= link_to "My Account", staff_path(current_staff)%></li>
+            <% if referee_signed_in? %>
+                <li><%= link_to "My Account", referee_path(current_referee)%></li>
             <% end %>
             <% if user_signed_in? %>
                 <li><%= link_to "My Account", user_path(current_user)%></li>
