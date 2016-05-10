@@ -18,7 +18,7 @@
               <%= f.label :offer_type %>
           </div>
           <div class="col-sm-8">
-              <%= f.text_field :offer_type, class: "form-control", placeholder: "Type of offer", autofocus: true %>
+              <%= f.select(:offer_type, options_for_select([['Conditional', 'Conditional'], ['Unconditional', 'Unconditional']]), :class => 'dropdown') %>
           </div>
       </div>
       <div class="form-group">

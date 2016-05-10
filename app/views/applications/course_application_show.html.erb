@@ -1,0 +1,33 @@
+
+<h3 class="subheading"><%= @user.forename %>'s Application to <%= @course.title %></h3>
+
+<br>
+
+<div class="content-container">
+  <strong>Forename: </strong><%= @user.forename %> <br>
+  <strong>Surname: </strong><%= @user.surname %> <br>
+  <strong>Email: </strong><%= @user.email %> <br>
+  <strong>Personal Statement: </strong><%= @user.personal_statement %> <br>
+  <strong>Reference: </strong><%= @user.application.reference %> <br>
+
+  <br>
+
+  <strong>Course: </strong><%= link_to "#{@course.title}", course_path(@course)%><br>
+
+  <br>
+
+  <% @course_applications = @course.course_applications %>
+  <% @course_applications.each do |app| %>
+    <% if !app.offer %>
+      <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-xs btn-success" %> |
+      <%= link_to "Decline", root_path, class: "btn btn-xs btn-danger" %>
+    <% else %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      You have already responded to this offer
+    </div>
+    <% end %>
+
+  <% end %>
+</div>

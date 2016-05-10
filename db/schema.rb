@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510182744) do
+ActiveRecord::Schema.define(version: 20160510223952) do
 
   create_table "applications", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.boolean  "referred",   default: false
+    t.string   "reference"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -53,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160510182744) do
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.string   "status",         default: "In Progress"
+    t.boolean  "referred",       default: false
   end
 
   create_table "course_categories", force: :cascade do |t|

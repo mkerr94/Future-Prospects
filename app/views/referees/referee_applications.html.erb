@@ -1,1 +1,38 @@
-<h1>My Applications</h1>
+<div class="content-container">
+  <h1>My Applications</h1>
+  <br>
+
+
+  <% @users.each do |user| %>
+    <% @application = user.application %>
+    <% if !@application.referred %>
+      <strong>Student ID: </strong><%= user.id %> <br>
+      <strong>Student Email: </strong><%= user.email %> <br>
+      <strong>Student Forename: </strong><%= user.forename %> <br>
+      <strong>Student Surname: </strong><%= user.surname %> <br>
+
+      <br>
+
+      <% @course_applications = @application.course_applications %>
+      <strong>Courses Applied To: </strong> <br>
+      <% @course_applications.each do |app| %>
+        <%= link_to app.course.title, course_path(app.course) %> at <%= link_to app.course.college.name, college_path(app.course.college)  %><br>
+      <% end %>
+
+        <br>
+
+        <%= text_area :application, :reference, size: "80x10"%>
+
+        <br>
+
+        <%= link_to "Add Reference", add_reference_path(:reference => :reference, :application => user.application), class: "btn btn-success" %>
+    <% else %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+      <span class="sr-only">Error:</span>
+      You don't have any applications
+    </div>
+    <% end %>
+  <% end %>
+
+</div>

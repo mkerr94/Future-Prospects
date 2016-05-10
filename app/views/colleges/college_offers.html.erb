@@ -1,9 +1,9 @@
 <%= render 'college_header' %>
-
+<br>
 <h3 class="subheading">All Offers</h3>
 <br>
 
-<div align='center'>
+<div class="content-container">
   <% if @offers.count == 0 %>
   <div class="content-container">
     <div class="alert alert-danger" role="alert">
@@ -13,11 +13,13 @@
     </div>
   </div>
   <% end %>
+
   <% @offers.each do |offer| %>
-  <strong>Student: </strong><%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
+    <strong>Student: </strong><%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
     <strong>Offer: </strong><%= offer.offer_type %> <br>
     <strong>Details: </strong><%= offer.details %> <br>
-    <strong>Status: </strong><%= offer.status %>
+    <strong>Status: </strong><%= offer.status %> <br>
+    <br>
   <% end %>
 
 </div>

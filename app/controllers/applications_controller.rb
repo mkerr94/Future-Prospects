@@ -1,5 +1,4 @@
 class ApplicationsController < ApplicationController
-  before_action :authenticate_user!
   before_action :validate_user, only: [:new, :create] # prevent users from making multiple applications
 
   def index
@@ -11,7 +10,7 @@ class ApplicationsController < ApplicationController
     @application = Application.find(params[:id])
     @courses = @application.courses
     @accepted_course_application = @application.course_applications.where(status: "Completed")
-    
+
   end
 
   def new
@@ -31,6 +30,11 @@ class ApplicationsController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def course_application_show
+    @user = User.find(params[:user])
+    @course = Course.find(params[:course])
   end
 
   private

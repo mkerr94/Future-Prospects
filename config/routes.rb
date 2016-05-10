@@ -28,6 +28,8 @@ get 'course_applications', to: 'courses#course_applications'
 get 'user_offers', to: 'users#user_offers'
 get 'accept_offer', to: 'offers#accept'
 get 'referee_applications', to: 'referees#referee_applications'
+get 'add_reference', to: 'referees#add_reference'
+get 'course_application_show', to: 'applications#course_application_show'
 
 
 

@@ -17,7 +17,7 @@
     <tbody>
       <!-- For each course application attached to the current college do the following --->
       <% @college_course_applications.each do |app| %>
-        <% if !app.offer %>
+        <% if !app.offer && app.application.referred%>
           <!-- Finding the course of the the current course application -->
           <% @course = @courses.find(app.course_id) %>
           <!-- Displaying the course title, linking to the course page -->
@@ -41,8 +41,9 @@
               <%= link_to "#{@user.email}", user_path(@user) %>
             </td>
             <td>
-              <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-sm btn-primary" %> |
-              <%= link_to "Decline", root_path, class: "btn btn-sm btn-danger" %>
+              <%= link_to "View", {:controller => "applications", :action => "course_application_show", :course => app.course.id, :user => @user }, class: "btn btn-primary btn-xs" %> |
+              <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-xs btn-success" %> |
+              <%= link_to "Decline", root_path, class: "btn btn-xs btn-danger" %>
             </td>
           </tr>
         <% end %>

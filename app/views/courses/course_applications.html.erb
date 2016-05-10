@@ -1,13 +1,45 @@
-<h1 align='center'><%= @course.title %> Applications</h1>
-<hr>
+<h3 class='subheading'><%= @course.title %> Applications</h3>
 
-<div align='center'>
-  <% @course_applications.each do |application| %>
-    <% @app_result = application.application %>
-    <% @student = @app_result.user %>
-    Student ID: <%= @student.id %> <br>
-    <p>Student Email: <%= @student.email %></p>
-    <p><%= link_to "View Profile", user_path(@student), class: "btn btn-primary" %></p>
-    <hr>
+<br>
+
+<div class="content-container">
+
+<% @display = true %>
+<% @course_applications.each do |app| %>
+  <% if !app.referred %>
+    <% @display = false %>
   <% end %>
+<% end %>
+
+  <table class="table">
+  <thead>
+    <tr>
+      <td>Email</td>
+      <td>Forename</td>
+      <td>Surname</td>
+      <td>Reference</td>
+      <td>Actions</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @course_applications.each do |application| %>
+      <% if application.referred %>
+        <% @app_result = application.application %>
+        <% @student = @app_result.user %>
+        <tr>
+          <td><%= @student.email %></td>
+          <td><%= @student.forename %></td>
+          <td><%= @student.surname %></td>
+          <td><%= @student.application.reference %></td>
+          <td>
+            <%= link_to "View", {:controller => "applications", :action => "course_application_show", :course => application.course.id, :user => @student }, class: "btn btn-primary btn-xs" %> |
+            <%= link_to "Make Offer", new_offer_path(:course_application => application.id), class: "btn btn-xs btn-success" %> |
+            <%= link_to "Decline", root_path, class: "btn btn-xs btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+
+    <% end %>
+  </tbody>
+</table>
 </div>

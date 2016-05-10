@@ -9,7 +9,27 @@ class RefereesController < ApplicationController
   end
 
   def referee_applications
-    #code
+    @users  = User.where(referee_id: current_referee.id)
+  end
+
+  def add_reference
+    @application = Application.find(params[:application])
+    @reference = params[:reference]
+
+    @application.reference = @reference
+    @application.referred = true
+
+    @course_applications = @application.course_applications
+    @course_applications.each do |app|
+      app.referred = true
+      app.save
+    end
+
+     if @application.save
+       flash[:success] = "Reference Added"
+       redirect_to referee_applications_path
+     end
+
   end
 
 end
