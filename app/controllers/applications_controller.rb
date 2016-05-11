@@ -39,7 +39,7 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:user, course_ids: [])
+    params.require(:application).permit(:user, :referece, course_ids: [])
   end
 
   # Redirect user if they have already made an application

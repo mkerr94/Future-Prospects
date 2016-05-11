@@ -14,12 +14,26 @@
   </div>
   <% end %>
 
-  <% @offers.each do |offer| %>
-    <strong>Student: </strong><%= offer.course_application.application.user.forename + " " + offer.course_application.application.user.surname %> <br>
-    <strong>Offer: </strong><%= offer.offer_type %> <br>
-    <strong>Details: </strong><%= offer.details %> <br>
-    <strong>Status: </strong><%= offer.status %> <br>
-    <br>
-  <% end %>
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Student</th>
+        <th>Course</th>
+        <th>Offer</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @offers.each do |offer| %>
+        <tr>
+          <td><%= link_to "#{offer.course_application.application.user.forename} #{offer.course_application.application.user.surname}", user_path(offer.course_application.application.user)%></td>
+          <td><%= link_to "#{offer.course_application.course.title}", course_path(offer.course_application.course)%></td>
+          <td><%= offer.offer_type %></td>
+          <td><%= offer.status %></td>
+          <td><%= link_to "View", offer_path(offer), class: "btn btn-xs btn-primary" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

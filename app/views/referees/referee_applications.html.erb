@@ -1,37 +1,37 @@
+<h3 class="subheading">My Applications</h3>
+<br>
 <div class="content-container">
-  <h1>My Applications</h1>
-  <br>
-
-
   <% @users.each do |user| %>
     <% @application = user.application %>
+
     <% if !@application.referred %>
+      <strong>Student: </strong><%= link_to "#{user.forename} #{user.surname}", user_path(user)%> <br>
       <strong>Student ID: </strong><%= user.id %> <br>
       <strong>Student Email: </strong><%= user.email %> <br>
-      <strong>Student Forename: </strong><%= user.forename %> <br>
-      <strong>Student Surname: </strong><%= user.surname %> <br>
 
+      <br>
       <br>
 
       <% @course_applications = @application.course_applications %>
-      <strong>Courses Applied To: </strong> <br>
-      <% @course_applications.each do |app| %>
-        <%= link_to app.course.title, course_path(app.course) %> at <%= link_to app.course.college.name, college_path(app.course.college)  %><br>
-      <% end %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>College</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @course_applications.each do |app| %>
+            <tr>
+              <td><%= link_to "#{app.course.title}", course_path(app.course)%></th>
+              <td><%= link_to "#{app.course.college.name}", college_path(app.course.college)%></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-        <br>
+        <%= link_to "Add Reference", new_reference_path(:application => user.application), class: "btn btn-success" %>
 
-        <%= text_area :application, :reference, size: "80x10"%>
-
-        <br>
-
-        <%= link_to "Add Reference", add_reference_path(:reference => :reference, :application => user.application), class: "btn btn-success" %>
-    <% else %>
-    <div class="alert alert-danger" role="alert">
-      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-      <span class="sr-only">Error:</span>
-      You don't have any applications
-    </div>
     <% end %>
   <% end %>
 

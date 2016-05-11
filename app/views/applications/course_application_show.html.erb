@@ -6,9 +6,9 @@
 <div class="content-container">
   <strong>Forename: </strong><%= @user.forename %> <br>
   <strong>Surname: </strong><%= @user.surname %> <br>
-  <strong>Email: </strong><%= @user.email %> <br>
+  <strong>Email: </strong><%= link_to @user.email, user_path(@user)%> <br>
   <strong>Personal Statement: </strong><%= @user.personal_statement %> <br>
-  <strong>Reference: </strong><%= @user.application.reference %> <br>
+  <strong>Reference: </strong><%= @user.application.reference.body %> <br>
 
   <br>
 
@@ -19,6 +19,8 @@
   <% @course_applications = @course.course_applications %>
   <% @course_applications.each do |app| %>
     <% if !app.offer %>
+      <strong>Application status: </strong> <%=  app.status %> <br>
+      <br>
       <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-xs btn-success" %> |
       <%= link_to "Decline", root_path, class: "btn btn-xs btn-danger" %>
     <% else %>

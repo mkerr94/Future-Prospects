@@ -51,6 +51,12 @@ class CoursesController < ApplicationController
     @course_applications = @course.course_applications
   end
 
+  def course_offers
+    @course = Course.find(params[:course])
+    @course_applications = @course.course_applications
+    @offers = Offer.where(course_application: @course_applications)
+  end
+
   private
   # Whitelisting the values which can be passed from view to controller
   def course_params

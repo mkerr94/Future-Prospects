@@ -15,6 +15,7 @@ resources :users, :only => [ :show, :index]
 resources :courses
 resources :categories, except: [:destroy]
 resources :applications
+resources :references
 resource :order
 
 root 'static_pages#home'
@@ -25,6 +26,7 @@ get 'college_applications', to: 'colleges#college_applications'
 get 'college_courses', to: 'colleges#college_courses'
 get 'college_offers', to: 'colleges#college_offers'
 get 'course_applications', to: 'courses#course_applications'
+get 'course_offers', to: 'courses#course_offers'
 get 'user_offers', to: 'users#user_offers'
 get 'accept_offer', to: 'offers#accept'
 get 'referee_applications', to: 'referees#referee_applications'

@@ -19,9 +19,6 @@
         <li><%= link_to "Courses", courses_path%></li>
         <li><%= link_to "Colleges", colleges_path %></li>
         <li><%= link_to "Categories", categories_path %></li>
-        <% if college_signed_in? %>
-            <li><%= link_to "Students", users_path%></li>
-        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? && !(current_user.applied == true)%>
@@ -60,7 +57,7 @@
             <% if college_signed_in? %>
             <li><%= link_to "View All Applications", college_applications_path %></li>
             <li><%= link_to "View All Offers", college_offers_path %></li>
-            <li><%= link_to "My Courses", college_courses_path %></li>
+            <li><%= link_to "View All Courses", college_courses_path %></li>
             <li><%= link_to "Edit Account", edit_college_registration_path(current_college) %></li>
             <% end %>
             <li role="separator" class="divider"></li>

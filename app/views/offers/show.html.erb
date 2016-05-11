@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Offer type:</strong>
-  <%= @offer.offer_type %>
-</p>
-
-<p>
-  <strong>Details:</strong>
-  <%= @offer.details %>
-</p>
-
-<p>
-  <strong>Status:</strong> <%= @offer.status %>
-</p>
-
-<%= link_to 'Edit', edit_offer_path(@offer) %> |
-<%= link_to 'Back', offers_path %>
+<br>
+<h3 class="subheading">Your Offer to <%= @offer.course_application.application.user.forename %></h3>
+<br>
+<div class="content-container">
+  <strong>Student: </strong> <%= link_to @offer.course_application.application.user.forename, user_path(@offer.course_application.application.user) %>  <%= link_to @offer.course_application.application.user.surname, user_path(@offer.course_application.application.user) %>
+  <br>
+  <strong>Course: </strong> <%= link_to @offer.course_application.course.title, course_path(@offer.course_application.course) %>
+  <br>
+  <strong>College: </strong> <%= link_to @offer.course_application.course.college.name, college_path(@offer.course_application.course.college) %>
+  <br>
+  <br>
+  <strong>Offer type: </strong><%= @offer.offer_type %>
+  <br>
+  <strong>Details: </strong><%= @offer.details %>
+  <br>
+  <strong>Status: </strong> <%= @offer.status %>
+</div>

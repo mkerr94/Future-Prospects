@@ -30,7 +30,7 @@
           <td><%= @student.email %></td>
           <td><%= @student.forename %></td>
           <td><%= @student.surname %></td>
-          <td><%= @student.application.reference %></td>
+          <td><%= @student.application.reference.body %></td>
           <td>
             <%= link_to "View", {:controller => "applications", :action => "course_application_show", :course => application.course.id, :user => @student }, class: "btn btn-primary btn-xs" %> |
             <%= link_to "Make Offer", new_offer_path(:course_application => application.id), class: "btn btn-xs btn-success" %> |

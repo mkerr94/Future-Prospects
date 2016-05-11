@@ -11,6 +11,7 @@
         <th>Title</th>
         <th>Categories</th>
         <th>Applications</th>
+        <th>Offers</th>
       </tr>
     </thead>
       <tbody>
@@ -26,12 +27,20 @@
               <% @counter = 0 %>
               <% @course_applications = course.course_applications %>
               <% @course_applications.each do |app| %>
-                <% if app.referred %>
+                <% if app.referred && !app.offer%>
                   <% @counter = @counter + 1 %>
                 <% end %>
               <% end %>
               <%= link_to @counter, {:controller => "courses", :action => "course_applications", :course => course.id } %>
-
+            </td>
+            <td>
+              <% @offer_counter = 0 %>
+              <% @course_applications.each do |app| %>
+                <% if app.offer %>
+                  <% @offer_counter = @offer_counter + 1 %>
+                <% end %>
+              <% end %>
+              <%= link_to @offer_counter, {:controller => "courses", :action => "course_offers", :course => course.id } %>
             </td>
           </tr>
         <% end %>
