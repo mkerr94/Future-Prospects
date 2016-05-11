@@ -213,8 +213,11 @@ ul.nav li a, ul.nav li a:visited {
 }
 
 /*
-    Common
+#########################
+#### Sign Up Wizard #####
+#########################
 */
+
 
 .wizard,
 .tabcontrol
@@ -330,7 +333,7 @@ ul.nav li a, ul.nav li a:visited {
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #2184be;
+    background: #D32F2F;
     color: #fff;
     cursor: default;
 }
@@ -467,7 +470,7 @@ ul.nav li a, ul.nav li a:visited {
 .wizard > .actions a:hover,
 .wizard > .actions a:active
 {
-    background: #2184be;
+    background: #D32F2F;
     color: #fff;
     display: block;
     padding: 0.5em 1em;
