@@ -27,7 +27,7 @@
               <% @counter = 0 %>
               <% @course_applications = course.course_applications %>
               <% @course_applications.each do |app| %>
-                <% if app.referred && !app.offer%>
+                <% if app.application.referred && !app.offer && app.status != "rejected"%>
                   <% @counter = @counter + 1 %>
                 <% end %>
               <% end %>

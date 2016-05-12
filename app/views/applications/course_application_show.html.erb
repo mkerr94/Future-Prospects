@@ -1,28 +1,42 @@
 
-<h3 class="subheading"><%= @user.forename %>'s Application to <%= @course.title %></h3>
+<h2 class="subheading"><%= @user.forename %>'s Application to <%= link_to @course.title, course_path(@course) %></h3>
 
 <br>
 
 <div class="content-container">
+  <h3 style="font-family: avenir-light">Personal Information</h3>
   <strong>Forename: </strong><%= @user.forename %> <br>
   <strong>Surname: </strong><%= @user.surname %> <br>
   <strong>Email: </strong><%= link_to @user.email, user_path(@user)%> <br>
-  <strong>Personal Statement: </strong><%= @user.personal_statement %> <br>
-  <strong>Reference: </strong><%= @user.application.reference.body %> <br>
-
   <br>
 
-  <strong>Course: </strong><%= link_to "#{@course.title}", course_path(@course)%><br>
+  <h3 style="font-family: avenir-light">Academic Information</h3>
+  <strong>Highest Qualification Level: </strong><%= @user.highest_qualification_level %> <br>
+  <strong>Highest Qualification Institution: </strong><%= @user.highest_qualification_institution %>
+  <br>
+  <br>
+
+  <h3 style="font-family: avenir-light">Reference</h3>
+  <div class="well well-sm" style="padding: 20px">
+    <%= @user.application.reference.body %>
+  </div>
+  <br>
+
+  <h3 style="font-family: avenir-light">Personal Statement</h3>
+
+  <div class="well well-sm" style="padding: 20px">
+    <%= @user.personal_statement %>
+  </div>
 
   <br>
 
   <% @course_applications = @course.course_applications %>
   <% @course_applications.each do |app| %>
     <% if !app.offer %>
-      <strong>Application status: </strong> <%=  app.status %> <br>
+      <h3 style="font-family: avenir-light">Application status</h3><h4><%=  app.status %></h4>
       <br>
       <%= link_to "Make Offer", new_offer_path(:course_application => app.id), class: "btn btn-xs btn-success" %> |
-      <%= link_to "Decline", root_path, class: "btn btn-xs btn-danger" %>
+      <%= link_to "Decline", reject_application_path(:course_application => app.id), class: "btn btn-xs btn-danger" %>
     <% else %>
     <div class="alert alert-danger" role="alert">
       <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>

@@ -38,6 +38,9 @@
                       <% if @user_course_application.offer %>
                         <%= link_to "You have an offer", user_offers_path, class: "label label-success" %>
                       <% end %>
+                      <% if @user_course_application.status == "rejected" %>
+                        <p class="label label-danger">Rejected</p>
+                      <% end %>
                     <% end %>
                 </div>
             </div>

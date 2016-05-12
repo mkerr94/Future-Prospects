@@ -40,4 +40,13 @@ class CollegesController < ApplicationController
       end
     end
 
+    def rejected_applications
+      @college_courses = current_college.courses
+      @college_course_applications = CourseApplication.where(course: @college_courses.where(college_id: current_college.id)).all
+      @courses = Course.all
+      @applications = Application.all
+      @users = User.all
+
+    end
+
 end

@@ -74,6 +74,23 @@ class OffersController < ApplicationController
     @user.save
   end
 
+  # When a user declines an offer
+  def decline
+
+  end
+
+  # When a college rejects an application
+  def reject
+    @course_application = CourseApplication.find(params[:course_application])
+    @course_application.status = "rejected"
+    if @course_application.save
+        flash[:success] = "Application was rejected"
+        redirect_to college_applications_path
+    end
+
+
+  end
+
   private
 
     def set_offer

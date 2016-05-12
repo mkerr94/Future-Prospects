@@ -5,6 +5,13 @@
 <div align='center'>
   <div class="well well-sm" style="width: 50%">
     <% @course_applications.each do |app| %>
+      <% if app.status == "rejected" %>
+      <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Your application to study <%= link_to app.course.title, course_path(app.course) %> at <%= link_to app.course.college.name, college_path(app.course.college) %> was rejected
+      </div>
+      <% end %>
       <% if app.offer %>
         From: <%= link_to app.offer.college.name, college_path(app.offer.college) %> <br>
         To Study: <%= link_to app.course.title, course_path(app.course) %> <br>

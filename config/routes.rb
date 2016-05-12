@@ -29,9 +29,12 @@ get 'course_applications', to: 'courses#course_applications'
 get 'course_offers', to: 'courses#course_offers'
 get 'user_offers', to: 'users#user_offers'
 get 'accept_offer', to: 'offers#accept'
+get 'decline_offer', to: 'offers#decline'
 get 'referee_applications', to: 'referees#referee_applications'
 get 'add_reference', to: 'referees#add_reference'
 get 'course_application_show', to: 'applications#course_application_show'
+get 'reject_application', to: 'offers#reject'
+get 'rejected_college_applications', to: 'colleges#rejected_applications'
 
 
 

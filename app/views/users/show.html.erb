@@ -1,15 +1,28 @@
 <h1 align='center'><%= @user.forename %>'s Account</h1>
 
-<ul>
-    <li><%= @user.email %></li>
-    <li><%= @user.forename %></li>
-    <li><%= @user.surname %></li>
-    <li><%= @user.phone_no %></li>
-    <li><%= @user.term_address %></li>
-    <li><%= @user.term_postcode %></li>
-    <li><%= @user.perm_address %></li>
-    <li><%= @user.term_postcode %></li>
-    <li><%= @user.personal_statement %></li>
-    <li><%= @user.highest_qualification_level %></li>
-    <li><%= @user.highest_qualification_institution %></li>
-</ul>
+<br>
+
+<div class="content-container">
+  <h3 style="font-family: avenir-light">Personal Information</h3>
+  <strong>Email: </strong><%= @user.email %> <br>
+  <strong>First Name: </strong><%= @user.forename%> <br>
+  <strong>Surname:  </strong><%= @user.surname %> <br>
+  <strong>Phone No: </strong><%= @user.phone_no %> <br>
+  <strong>Address: </strong><%= @user.perm_address %> <br>
+  <strong>Postode: </strong><%= @user.perm_postcode %> <br>
+  <br>
+  <h3 style="font-family: avenir-light">Academic Information</h3>
+  <strong>Highest Qualification Level: </strong><%= @user.highest_qualification_level %> <br>
+  <strong>Highest Qualification Institution: </strong><%= @user.highest_qualification_institution %> <br>
+  <br>
+  <h3 style="font-family: avenir-light">Referee</h3>
+  <strong>First Name: </strong><%= @user.referee.forename %> <br>
+  <strong>Surname: </strong><%= @user.referee.surname %> <br>
+  <strong>Email: </strong><%= @user.referee.email %> <br>
+  <strong>ID Code: </strong><%= @user.referee.id %> <br>
+  <br>
+  <h3 style="font-family: avenir-light">Personal Statement</h3>
+  <div class="well well-sm" style="padding: 20px">
+    <%= @user.personal_statement %>
+  </div>
+</div>
