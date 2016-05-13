@@ -50,6 +50,14 @@
         <h3>Academic Information</h3>
         <section>
           <div class="field">
+            <%= f.label :qualifications %><br />
+            <%= f.text_area :qualifications, size: "90x15", placeholder: "Please use the following format:
+            [Level] [Course] [Grade]. E.g:
+            Higher English A
+            Advanced Higher Physics B" %>
+          </div>
+
+          <div class="field">
             <%= f.label :highest_qualification_level %><br />
             <%= f.text_field :highest_qualification_level %>
           </div>

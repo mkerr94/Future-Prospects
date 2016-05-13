@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513124156) do
+ActiveRecord::Schema.define(version: 20160513125406) do
 
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 20160513124156) do
     t.boolean  "has_accepted_offer",                default: false
     t.boolean  "has_paid",                          default: false
     t.integer  "referee_id"
+    t.text     "qualifications"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

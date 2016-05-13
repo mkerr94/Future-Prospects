@@ -12,6 +12,7 @@
   <strong>Postode: </strong><%= @user.perm_postcode %> <br>
   <br>
   <h3 style="font-family: avenir-light">Academic Information</h3>
+  <strong>Qualifications: </strong><%= simple_format@user.qualifications %> <br>
   <strong>Highest Qualification Level: </strong><%= @user.highest_qualification_level %> <br>
   <strong>Highest Qualification Institution: </strong><%= @user.highest_qualification_institution %> <br>
   <br>
@@ -22,6 +23,7 @@
   <strong>ID Code: </strong><%= @user.referee.id %> <br>
   <br>
   <h3 style="font-family: avenir-light">Personal Statement</h3>
+
   <div class="well well-sm" style="padding: 20px">
     <%= @user.personal_statement %>
   </div>
