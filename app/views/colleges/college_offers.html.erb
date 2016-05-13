@@ -30,7 +30,14 @@
           <td><%= link_to "#{offer.course_application.application.user.forename} #{offer.course_application.application.user.surname}", user_path(offer.course_application.application.user)%></td>
           <td><%= link_to "#{offer.course_application.course.title}", course_path(offer.course_application.course)%></td>
           <td><%= offer.offer_type %></td>
-          <td><%= offer.status %></td>
+          <td>
+            <% if offer.status == "Declined" %>
+              <p class="label label-danger"><%= offer.status %></p>
+              <% else %>
+              <%= offer.status %>
+            <% end %>
+
+          </td>
           <td><%= link_to "View", offer_path(offer), class: "btn btn-xs btn-primary" %></td>
         </tr>
       <% end %>

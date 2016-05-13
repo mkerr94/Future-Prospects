@@ -36,7 +36,11 @@
                     <% if course.course_applications %>
                       <% @user_course_application = course.course_applications.where(application_id: @user.application.id).first %>
                       <% if @user_course_application.offer %>
+                      <% if @user_course_application.offer.status == "Declined" %>
+                        <p class="label label-warning">You rejected an offer for this course</p>
+                        <% else %>
                         <%= link_to "You have an offer", user_offers_path, class: "label label-success" %>
+                      <% end %>
                       <% end %>
                       <% if @user_course_application.status == "rejected" %>
                         <p class="label label-danger">Rejected</p>

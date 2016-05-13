@@ -12,7 +12,7 @@
         Your application to study <%= link_to app.course.title, course_path(app.course) %> at <%= link_to app.course.college.name, college_path(app.course.college) %> was rejected
       </div>
       <% end %>
-      <% if app.offer %>
+      <% if app.offer && app.offer.status != "Declined" %>
         From: <%= link_to app.offer.college.name, college_path(app.offer.college) %> <br>
         To Study: <%= link_to app.course.title, course_path(app.course) %> <br>
         Offer Type: <%= app.offer.offer_type %> <br>
@@ -23,7 +23,7 @@
 
         <% if app.offer.status != "Accepted" %>
           <%= link_to "Accept", accept_offer_path(:offer => app.offer.id), class: "btn btn-primary btn-xs" %> |
-          <%= link_to "Decline", root_path, class: "btn btn-danger btn-xs" %>
+          <%= link_to "Decline", decline_offer_path(:offer => app.offer.id), class: "btn btn-danger btn-xs" %>
           <% else %>
           <span class="label label-danger">You have already accepted an offer</span>
         <% end %>

@@ -76,6 +76,17 @@ class OffersController < ApplicationController
 
   # When a user declines an offer
   def decline
+    @offer = Offer.find(params[:offer])
+    @offer.status = "Declined"
+    if @offer.save
+      @course_application = @offer.course_application
+      @course_application.status = "Declined"
+      @course_application.save
+
+      flash[:success] = "Offer has been declined"
+      redirect_to user_offers_path
+    end
+
 
   end
 
