@@ -4,13 +4,6 @@
 
 <div class="content-container">
 
-<% @display = true %>
-<% @course_applications.each do |app| %>
-  <% if !app.referred %>
-    <% @display = false %>
-  <% end %>
-<% end %>
-
   <table class="table">
   <thead>
     <tr>

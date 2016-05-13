@@ -16,7 +16,16 @@
 <div class="well col-xs-10 col-xs-offset-1">
 
     <div class="course-main">
+      <h3 style="font-family: avenir-light">Description</h3>
         <%= simple_format(@course.description) %>
+    </div>
+    <div class="course-requirements">
+      <h3 style="font-family: avenir-light">Requirements</h3>
+      <%= simple_format(@course.requirements) %>
+    </div>
+    <div class="course-curriculum">
+      <h3 style="font-family: avenir-light">Curriculum</h3>
+      <%= simple_format(@course.curriculum) %>
     </div>
     <% if current_college == @course.college %>
       <div class="course-actions">

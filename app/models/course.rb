@@ -7,6 +7,8 @@ class Course < ActiveRecord::Base
 
     validates :title, presence: true, length: { minimum: 3, maximum: 50 }
     validates :description, presence: true, length: { minimum: 10, maxium: 600 }
+    validates :requirements, presence: true, length: { minimum: 10, maxium: 600 }
+    validates :curriculum, presence: true, length: { minimum: 10, maxium: 600 }
 
     def self.search(search)
       where("title LIKE ?", "%#{search}%")

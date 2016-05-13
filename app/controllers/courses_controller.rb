@@ -60,7 +60,7 @@ class CoursesController < ApplicationController
   private
   # Whitelisting the values which can be passed from view to controller
   def course_params
-    params.require(:course).permit(:title, :description, :college, category_ids: [])
+    params.require(:course).permit(:title, :description, :requirements, :curriculum, :college, category_ids: [])
   end
 
 end

@@ -1,6 +1,17 @@
 <div class="row">
     <div class="col-xs-12">
         <%= form_for(@course, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <% if @course.errors.any? %>
+    <div id="error_explanation" class="content-container">
+      <h2><%= pluralize(@course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
         <div class="form-group">
             <div class="control-label col-sm-2">
                 <%= f.label :title %>
@@ -23,7 +34,23 @@
                 <%= f.label :description %>
             </div>
             <div class="col-sm-8">
-                <%= f.text_area :description, rows:15, class: "form-control", placeholder: "Description of course"%>
+                <%= f.text_area :description, rows:10, class: "form-control", placeholder: "Description of course"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-2">
+                <%= f.label :requirements %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_area :requirements, rows:10, class: "form-control", placeholder: "Additional Requirements"%>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="control-label col-sm-2">
+                <%= f.label :curriculum %>
+            </div>
+            <div class="col-sm-8">
+                <%= f.text_area :curriculum, rows:10, class: "form-control", placeholder: "Course Curriculum"%>
             </div>
         </div>
         <div class="form-group">
