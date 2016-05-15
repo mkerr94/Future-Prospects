@@ -1,4 +1,6 @@
-<h3 class="subheading">Sign up</h3> <br>
+<h3 class="subheading">Sign up Referee</h3> <br>
+
+<br>
 
 <div class="content-container">
 
@@ -7,7 +9,7 @@
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
+      <%= f.email_field :email, autofocus: true, class: "form-control", style: "width: 400px" %>
     </div>
 
     <div class="field">
@@ -15,38 +17,41 @@
       <% if @validatable %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control", style: "width: 400px" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", style: "width: 400px" %>
     </div>
 
     <div class="field">
       <%= f.label :forename %><br />
-      <%= f.text_field :forename%>
+      <%= f.text_field :forename, class: "form-control", style: "width: 400px"%>
     </div>
 
     <div class="field">
       <%= f.label :surname %><br />
-      <%= f.text_field :surname%>
+      <%= f.text_field :surname, class: "form-control", style: "width: 400px"%>
     </div>
 
     <div class="field">
       <%= f.label :address %><br />
-      <%= f.text_field :address%>
+      <%= f.text_field :address, class: "form-control", style: "width: 400px"%>
     </div>
 
     <div class="field">
       <%= f.label :phone_no %><br />
-      <%= f.text_field :phone_no%>
+      <%= f.text_field :phone_no, class: "form-control", style: "width: 400px"%>
     </div>
 
+    <br>
+
     <div class="actions">
-      <%= f.submit "Sign up" %>
+      <%= f.submit "Sign up", class: "btn btn-success", style: "width: 100px"%>
     </div>
   <% end %>
+  <br>
 
   <%= render "referees/shared/links" %>
 </div>

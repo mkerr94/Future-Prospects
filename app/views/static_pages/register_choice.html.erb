@@ -1,12 +1,23 @@
-<h3 align='center' class='page-title'>I am a...</h1>
+<h3 style="font-family: avenir-light" align='center'>Choose Your Role</h3>
 <br>
-<ul>
-    <!-- If student, go to student registration form -->
-    <li><%= link_to "Student", new_user_registration_path %></li>
-    <br>
-    <!-- If referee, go to referee registration form -->
-    <li><%= link_to "Referee", new_referee_registration_path %></li>
-    <br>
-    <!-- If institution, go to institution registration form -->
-    <li><%= link_to "Institution", new_college_registration_path %></li>
-</ul>
+<div align='center' style="font-family: avenir-light;">
+  <small>Register</small>
+</div>
+<br>
+<br>
+<div align='center' style="padding-left: 7%; padding-right: 7%">
+  <div class="row">
+    <div class="col-md-4">
+      <%= link_to image_tag("student.png", class: "img-responsive img-rounded img-thumbnail"), new_user_registration_path %>
+      <h4 style="font-family: avenir-light"><%= link_to "Student", new_user_registration_path %></h4>
+    </div>
+    <div class="col-md-4">
+      <%=  link_to image_tag("lecturer.png", class: "img-responsive img-rounded img-thumbnail"), new_referee_registration_path %>
+      <h4 style="font-family: avenir-light"><%= link_to "Referee", new_referee_registration_path %></h4>
+    </div>
+    <div class="col-md-4">
+      <%= link_to image_tag("uni.png", class: "img-responsive img-rounded img-thumbnail"), new_college_registration_path %>
+      <h4 style="font-family: avenir-light"><%= link_to "College", new_college_registration_path %></h4>
+    </div>
+  </div>
+</div>

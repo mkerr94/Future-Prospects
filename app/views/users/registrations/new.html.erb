@@ -6,7 +6,7 @@
         <section>
           <div class="field">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true %>
+            <%= f.email_field :email, autofocus: true, class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
@@ -14,37 +14,42 @@
             <% if @validatable %>
             <em>(<%= @minimum_password_length %> characters minimum)</em>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "off" %>
+            <%= f.password_field :password, autocomplete: "off", class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :forename %><br />
-            <%= f.text_field :forename %>
+            <%= f.text_field :forename, class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :surname %><br />
-            <%= f.text_field :surname %>
+            <%= f.text_field :surname, class: "form-control", style: "width: 400px" %>
+          </div>
+
+          <div class="field">
+            <%= f.label :dob, "Date of Birth" %><br />
+            <%= f.date_select(:dob, :order => [:month, :day, :year]) %>
           </div>
 
           <div class="field">
             <%= f.label :perm_address, "Address" %><br />
-            <%= f.text_area :perm_address %>
+            <%= f.text_area :perm_address, class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :perm_postcode, "Postcode" %><br />
-            <%= f.text_field :perm_postcode %>
+            <%= f.text_field :perm_postcode, class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :phone_no %><br />
-            <%= f.text_field :phone_no %>
+            <%= f.text_field :phone_no, class: "form-control", style: "width: 400px" %>
           </div>
         </section>
         <h3>Academic Information</h3>
@@ -54,29 +59,33 @@
             <%= f.text_area :qualifications, size: "90x15", placeholder: "Please use the following format:
             [Level] [Course] [Grade]. E.g:
             Higher English A
-            Advanced Higher Physics B" %>
+            Advanced Higher Physics B", class: "form-control" %>
           </div>
+
+          <br>
 
           <div class="field">
             <%= f.label :highest_qualification_level %><br />
-            <%= f.text_field :highest_qualification_level %>
+            <%= f.text_field :highest_qualification_level, class: "form-control", style: "width: 400px" %>
           </div>
 
           <div class="field">
             <%= f.label :highest_qualification_institution %><br />
-            <%= f.text_field :highest_qualification_institution %>
+            <%= f.text_field :highest_qualification_institution, class: "form-control", style: "width: 400px" %>
           </div>
         </section>
         <h3>Referee &amp; Personal Statement</h3>
         <section>
           <div class="field">
             <%= f.label :referee_id, "Enter the ID number of your referee" %><br />
-            <%= f.number_field :referee_id %>
+            <%= f.number_field :referee_id, class: "form-control", style: "width: 400px" %>
           </div>
+
+          <br>
 
           <div class="field">
             <%= f.label :personal_statement %><br />
-            <%= f.text_area :personal_statement, size: "100x17", maxlength: 5000, id: 'personal_statement' %> <br>
+            <%= f.text_area :personal_statement, size: "100x17", maxlength: 5000, id: 'personal_statement', class: "form-control" %> <br>
 
 
               Characters remaining: <span id="counter" data-maximum-length="5000">5000</span>

@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # Pagination
 gem 'will_paginate', '~> 3.0.5'
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'bootstrap-will_paginate', '0.0.10'l
 # Braintree for payments
 gem 'braintree'
 
