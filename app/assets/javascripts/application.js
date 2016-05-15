@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery.steps
 //= require bootstrap-sprockets
+//= require moment
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require braintree
 //= require_tree .

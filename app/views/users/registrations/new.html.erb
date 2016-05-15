@@ -32,9 +32,15 @@
             <%= f.text_field :surname, class: "form-control", style: "width: 400px" %>
           </div>
 
-          <div class="field">
-            <%= f.label :dob, "Date of Birth" %><br />
-            <%= f.date_select(:dob, :order => [:month, :day, :year]) %>
+          <div class="field" style="width: 400px; height: 60px">
+            <%= f.label :date_of_birth, "Date of Birth" %>
+            <div class='input-group date' id='datetimepicker9'>
+                <%= f.text_field :date_of_birth, class: "form-control"%>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar">
+                    </span>
+                </span>
+            </div>
           </div>
 
           <div class="field">
@@ -123,5 +129,11 @@ $("#example-basic").steps({
   bodyTag: "section",
   transitionEffect: "slideLeft",
   autoFocus: true
+});
+
+$(function () {
+    $('#datetimepicker9').datetimepicker({
+      viewMode: 'years'
+    });
 });
 </script>

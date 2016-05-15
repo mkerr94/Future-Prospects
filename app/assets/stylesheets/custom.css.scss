@@ -1,5 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import 'bootstrap-datetimepicker';
+
 
 body{
     background-color: #FFFFFF;
@@ -324,7 +326,7 @@ ul.nav li a, ul.nav li a:visited {
 .wizard > .steps .disabled a:hover,
 .wizard > .steps .disabled a:active
 {
-    background: #eee;
+    background: #F2F2F2;
     color: #aaa;
     cursor: default;
 }
@@ -333,8 +335,7 @@ ul.nav li a, ul.nav li a:visited {
 .wizard > .steps .current a:hover,
 .wizard > .steps .current a:active
 {
-    background: #D32F2F;
-    color: #fff;
+    color: #D32F2F;
     cursor: default;
 }
 
@@ -342,8 +343,8 @@ ul.nav li a, ul.nav li a:visited {
 .wizard > .steps .done a:hover,
 .wizard > .steps .done a:active
 {
-    background: #607D8B;
-    color: #fff;
+    background: #F2F2F2;
+    color: #607D8B;
 }
 
 .wizard > .steps .error a,
@@ -356,10 +357,10 @@ ul.nav li a, ul.nav li a:visited {
 
 .wizard > .content
 {
-    background: #eee;
+    background: #F2F2F2;
     display: block;
     margin: 0.5em;
-    min-height: 43em;
+    min-height: 45em;
     overflow: hidden;
     position: relative;
     width: auto;

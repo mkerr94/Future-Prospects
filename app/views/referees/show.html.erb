@@ -1,0 +1,12 @@
+<h3 class="subheading"><%= current_referee.forename %> <%= current_referee.surname %>'s Account</h3>
+<br>
+<br>
+<div class="content-container">
+  <strong>First Name: </strong><%= current_referee.forename %> <br>
+  <strong>Second Name: </strong><%= current_referee.surname %> <br>
+  <strong>Email: </strong><%= current_referee.email %> <br>
+  <strong>ID Code: </strong><%= current_referee.id %> <br>
+
+  <br>
+  <%= link_to "My Applications", referee_applications_path, class: "btn btn-primary" %>
+</div>
