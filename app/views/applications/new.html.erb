@@ -16,6 +16,16 @@
 <br>
 
 <%= form_for(@application, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+<% if @application.errors.any? %>
+  <div id="error_explanation" class="content-container">
+    <h2><%= pluralize(@application.errors.count, "error") %> prohibited this application from being saved:</h2>
+    <ul>
+      <% @application.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   <div class="form-group">
           <div class="application-container">
             <h3 style="font-family:avenir-light; padding-left:15px">First Choice</h3>
@@ -70,7 +80,6 @@
 
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
             <script id="jsbin-javascript">
-
             jQuery.fn.filterByText = function(textbox, selectSingleMatch) {
                 return this.each(function() {
                     var select = this;
@@ -83,7 +92,6 @@
                         var options = $(select).empty().data('options');
                         var search = $(this).val().trim();
                         var regex = new RegExp(search,"gi");
-
                         $.each(options, function(i) {
                             var option = options[i];
                             if(option.text.match(regex) !== null) {
@@ -98,23 +106,18 @@
                     });
                 });
             };
-
             $(function() {
                 $('#application_course_ids').filterByText($('#textbox1'), false);
             });
-
             $(function() {
                 $('#application_course_ids_2').filterByText($('#textbox2'), false);
             });
-
             $(function() {
                 $('#application_course_ids_3').filterByText($('#textbox3'), false);
             });
-
             $(function() {
                 $('#application_course_ids_4').filterByText($('#textbox4'), false);
             });
-
             $(function() {
                 $('#application_course_ids_5').filterByText($('#textbox5'), false);
             });

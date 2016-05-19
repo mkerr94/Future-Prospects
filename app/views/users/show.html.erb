@@ -1,12 +1,15 @@
 <h1 align='center'><%= @user.forename %>'s Account</h1>
 
 <br>
+<br>
 
 <div class="content-container">
   <h3 style="font-family: avenir-light">Personal Information</h3>
   <strong>Email: </strong><%= @user.email %> <br>
   <strong>First Name: </strong><%= @user.forename%> <br>
   <strong>Surname:  </strong><%= @user.surname %> <br>
+  <% @dob = @user.date_of_birth %>
+  <strong>Date of Birth:  </strong><%= @dob[0...10] %> <br>
   <strong>Phone No: </strong><%= @user.phone_no %> <br>
   <strong>Address: </strong><%= @user.perm_address %> <br>
   <strong>Postode: </strong><%= @user.perm_postcode %> <br>
@@ -27,4 +30,13 @@
   <div class="well well-sm" style="padding: 20px">
     <%= @user.personal_statement %>
   </div>
+
+  <% if @user.application  %>
+    <% if @user.application.reference %>
+      <h3 style="font-family: avenir-light">Reference</h3>
+      <div class="well well-sm" style="padding: 20px">
+        <%= @user.application.reference.body %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

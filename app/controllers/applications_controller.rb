@@ -19,7 +19,7 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    @application = Application.create(application_params)
+    @application = Application.new(application_params)
     @application.user = current_user
     if @application.save
       flash[:success] = "Application Submitted"
@@ -39,7 +39,7 @@ class ApplicationsController < ApplicationController
 
   private
   def application_params
-    params.require(:application).permit(:user, :referece, course_ids: [])
+    params.require(:application).permit(:user, course_ids: [])
   end
 
   # Redirect user if they have already made an application

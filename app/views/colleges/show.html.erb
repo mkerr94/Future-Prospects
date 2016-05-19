@@ -31,7 +31,7 @@
         <% @courses.each do |course| %>
           <tr>
             <td><%= link_to course.title, course_path(course)%></td>
-            <td><%= course.description %></td>
+            <td><%= truncate(course.description, length: 200) %></td>
             <td>
               <% course.categories.each do |cat| %>
                 <%= cat.name %>

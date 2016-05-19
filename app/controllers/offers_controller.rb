@@ -68,6 +68,11 @@ class OffersController < ApplicationController
     @course_application.status = "Completed"
     @course_application.save
 
+    # Updating course spaces
+    @course = @course_application.course
+    @course.decrease_spaces
+    @course.save
+
     # Updating user status having accepted an offer
     @user = @offer.course_application.application.user
     @user.has_accepted_offer = true

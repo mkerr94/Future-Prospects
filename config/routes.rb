@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :offers
-  get 'applications/show'
-
-  get 'applications/create'
-
-
+resources :offers
 devise_for :referees, :controllers => { :registrations => 'referees/registrations' }
 devise_for :colleges, :controllers => { :registrations => 'colleges/registrations' }
 resources :referees

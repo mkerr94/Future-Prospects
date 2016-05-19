@@ -11,6 +11,7 @@
         <th>Title</th>
         <th>Categories</th>
         <th>Applications</th>
+        <th>Spaces</th>
         <th>Offers</th>
       </tr>
     </thead>
@@ -32,6 +33,9 @@
                 <% end %>
               <% end %>
               <%= link_to @counter, {:controller => "courses", :action => "course_applications", :course => course.id } %>
+            </td>
+            <td>
+              <%= course.spaces %>
             </td>
             <td>
               <% @offer_counter = 0 %>
