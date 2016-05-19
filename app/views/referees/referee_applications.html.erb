@@ -4,7 +4,8 @@
   <% @users.each do |user| %>
     <% @application = user.application %>
 
-    <% if !@application.referred %>
+    <% if @application %>
+      <% if !@application.referred %>
       <strong>Student: </strong><%= link_to "#{user.forename} #{user.surname}", user_path(user)%> <br>
       <strong>Student ID: </strong><%= user.id %> <br>
       <strong>Student Email: </strong><%= user.email %> <br>
@@ -35,6 +36,7 @@
         <br>
         <hr>
 
+      <% end %>
     <% end %>
   <% end %>
 

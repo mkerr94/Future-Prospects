@@ -25,6 +25,15 @@ class CollegesController < ApplicationController
         # All applications in the database
         @applications = Application.all
         @users = User.all
+
+        respond_to do |format|
+          format.html
+          format.pdf do
+                  render :pdf => 'file_name',
+                  :template => 'colleges/college_applications.pdf.erb',
+                  :layout => 'pdf.html.erb'
+                end
+        end
       end
     end
 

@@ -1,0 +1,43 @@
+<h3>All Applications: <%= current_college.name %></h3>
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Forename</th>
+      <th>Surname</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- For each course application attached to the current college do the following --->
+    <% @college_course_applications.each do |app| %>
+      <% if !app.offer && app.application.referred && app.status != "rejected"%>
+        <!-- Finding the course of the the current course application -->
+        <% @course = @courses.find(app.course_id) %>
+        <!-- Displaying the course title, linking to the course page -->
+        <tr>
+          <td>
+            <%=@course.title %>
+          </td>
+          <td>
+            <!-- Finding the application object attached to the course application -->
+            <% @application = @applications.find(app.application_id) %>
+           <!-- Finding the user object attached to the application -->
+           <% @user = @users.find(@application.user_id) %>
+           <!-- Displaying the names of the attached student -->
+           <%= @user.forename %> <br>
+          </td>
+          <td>
+            <%= @user.surname %>
+          </td>
+          <td>
+            <!-- Displaying the email of the student -->
+            <%= @user.email %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
