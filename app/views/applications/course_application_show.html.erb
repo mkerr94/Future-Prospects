@@ -3,6 +3,8 @@
 
 <br>
 
+<!-- Displaying the details of the student -->
+
 <div class="content-container">
   <h3 style="font-family: avenir-light">Personal Information</h3>
   <strong>Forename: </strong><%= @user.forename %> <br>
@@ -29,6 +31,8 @@
   </div>
 
   <br>
+
+  <!-- If the applications doesn't have an offer, show possible actions -->
 
   <% @course_applications = @course.course_applications %>
   <% @course_applications.each do |app| %>

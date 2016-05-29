@@ -1,3 +1,4 @@
+<!-- JQuery code for a dynamically updating search -->
 <script>
 $("#colleges .pagination a").delegate("click", function() {
   $.getScript(this.href);
@@ -9,6 +10,7 @@ $("#colleges_search input").keyup(function() {
 });
 </script>
 
+<!-- Search bar -->
 <div align='center'>
   <%= form_tag(colleges_path, :method => "get", id: "colleges_search", class: "navbar-form search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Search Colleges", style: "width:400px", class: "form-control" %>
@@ -25,6 +27,8 @@ $("#colleges_search input").keyup(function() {
 <% end %>
 
 <br>
+
+<!-- List all colleges -->
 
 <div id="colleges">
   <%= render 'colleges' %>

@@ -1,5 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
+  # Custom registrations controller
+  # Over riding default devise code to whitelist additional parameters
+
+  # Create method from the Devise github repo
   def create
     build_resource(registration_params)
 
@@ -19,6 +23,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   private
+  # Additional parameters to be saved upon registration
   def registration_params
       params.require(:user).permit(:email, :password, :password_confirmation, :forename, :surname, :date_of_birth, :perm_address, :perm_postcode, :term_address, :term_postcode, :phone_no, :highest_qualification_level, :highest_qualification_institution, :qualifications, :personal_statement, :referee_id)
   end

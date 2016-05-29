@@ -1,5 +1,8 @@
 class Referees::RegistrationsController < Devise::RegistrationsController
+  # Custom registrations controller
+  # Over riding default devise code to whitelist additional parameters
 
+  # Create method from the Devise github repo
   def create
     build_resource(registration_params)
 
@@ -19,7 +22,7 @@ class Referees::RegistrationsController < Devise::RegistrationsController
   end
 
   private
-
+  # Additional parameters to be saved upon registration
   def registration_params
       params.require(:referee).permit(:email, :password, :password_confirmation, :address, :forename, :surname, :phone_no)
   end

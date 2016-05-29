@@ -2,8 +2,9 @@
 
 <br>
 
-<div class="content-container">
+<!-- A table of applications to a particular course -->
 
+<div class="content-container">
   <table class="table">
   <thead>
     <tr>
@@ -16,6 +17,7 @@
   </thead>
   <tbody>
     <% @course_applications.each do |application| %>
+    <!-- If the application has been referred and the status isn't rejected, display the list of applications -->
       <% if application.application.referred && application.status != "rejected"%>
         <% @app_result = application.application %>
         <% @student = @app_result.user %>

@@ -1,7 +1,10 @@
-  <%= render 'college_header' %>
+<%= render 'college_header' %>
 
 <h3 class="subheading">All Applications</h3>
+
 <br>
+
+<!-- List all applications made to courses belonging to the current_college -->
 
 <div class="content-container">
   <table class="table">
@@ -52,10 +55,8 @@
   </table>
 
   <br>
-  <br>
-  <hr>
 
-  <%= link_to "View PDF", college_applications_path(:format => :pdf), class: "btn btn-primary" %>
+  <%= link_to "View PDF", college_applications_path(:format => :pdf), class: "btn btn-default btn-sm" %>
 </div>
 
 <br>

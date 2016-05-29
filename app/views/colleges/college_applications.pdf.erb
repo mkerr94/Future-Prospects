@@ -1,4 +1,17 @@
-<h3>All Applications: <%= current_college.name %></h3>
+<div align='center'>
+  <% if college_signed_in? %>
+    <% @college = current_college %>
+  <% end %>
+  <%= gravatar_for(@college, size: 130) %>
+</div>
+
+
+<h1 align='center'><%= @college.name %></h1>
+
+<br>
+
+<h3>All Applications</h3>
+
 <br>
 
 <table class="table">

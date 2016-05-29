@@ -3,6 +3,9 @@
 <h3 class="subheading">All Offers</h3>
 <br>
 
+<!--  List all offers made by the signed in college -->
+
+<!-- If no offers have been made, display a warning -->
 <div class="content-container">
   <% if @offers.count == 0 %>
   <div class="content-container">
@@ -43,4 +46,6 @@
       <% end %>
     </tbody>
   </table>
+  <br>
+  <%= link_to "View PDF", college_offers_path(:format => :pdf), class: "btn btn-default btn-sm" %>
 </div>

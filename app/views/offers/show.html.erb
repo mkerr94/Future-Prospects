@@ -1,6 +1,11 @@
 <br>
+
 <h3 class="subheading">Your Offer to <%= @offer.course_application.application.user.forename %></h3>
+
 <br>
+
+<!-- Showing the details of an offer -->
+
 <div class="content-container">
   <strong>Student: </strong> <%= link_to @offer.course_application.application.user.forename, user_path(@offer.course_application.application.user) %>  <%= link_to @offer.course_application.application.user.surname, user_path(@offer.course_application.application.user) %>
   <br>

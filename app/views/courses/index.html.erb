@@ -1,10 +1,15 @@
+<!-- If a college is signed in, display option to create a course or view courses belonging to the college -->
 <div align='center'>
   <% if college_signed_in? %>
     <%= link_to "Create new course", new_course_path, class: "btn btn-sm btn-warning" %> |
     <%= link_to "View My Courses", college_courses_path, class: "btn btn-sm btn-warning" %>
   <% end %>
 </div>
+
 <br>
+
+<!-- JQuery plugin for dynamic filtering of courses via a text search box -->
+
 <script>
 $("#courses .pagination a").delegate("click", function() {
   $.getScript(this.href);
@@ -15,6 +20,8 @@ $("#courses_search input").keyup(function() {
   return false;
 });
 </script>
+
+<!-- Search form -->
 
 <div align='center'>
   <%= form_tag(courses_path, :method => "get", id: "courses_search", class: "navbar-form search-form") do %>
@@ -32,6 +39,8 @@ $("#courses_search input").keyup(function() {
 <% end %>
 
 <br>
+
+<!-- Bootstrap grid of courses -->
 
 <div id="courses">
   <%= render 'courses' %>

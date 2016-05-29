@@ -1,11 +1,18 @@
 <h3 class="subheading">My Applications</h3>
-<br>
-<div class="content-container">
-  <% @users.each do |user| %>
-    <% @application = user.application %>
 
+<br>
+
+<!-- Listing all applications from students that belong to the signed in referee -->
+<div class="content-container">
+  <!-- For each student do -->
+  <% @users.each do |user| %>
+    <!-- make a session variable storing the current students application -->
+    <% @application = user.application %>
+    <!-- if the application exists -->
     <% if @application %>
+      <!-- if the application has NOT been referred -->
       <% if !@application.referred %>
+      <!-- display details about the student -->
       <strong>Student: </strong><%= link_to "#{user.forename} #{user.surname}", user_path(user)%> <br>
       <strong>Student ID: </strong><%= user.id %> <br>
       <strong>Student Email: </strong><%= user.email %> <br>
@@ -13,6 +20,7 @@
       <br>
       <br>
 
+      <!-- Display all applications for the application of the current student -->
       <% @course_applications = @application.course_applications %>
       <table class="table">
         <thead>

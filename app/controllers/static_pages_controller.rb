@@ -1,19 +1,19 @@
 class StaticPagesController < ApplicationController
 
-    def home
+  # Controller for all the static pages in the website
 
-    end
+  def home
+  end
 
-    def about
+  def about
+  end
 
-    end
+  # where the user chooses who they wish to log in as
+  def login_choice
+  end
 
-    def login_choice
-
-    end
-
-    def register_choice
-
-    end
+  # where the user chooses who they wish to register as
+  def register_choice
+  end
 
 end

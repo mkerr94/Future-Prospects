@@ -1,9 +1,10 @@
-
+<!-- Placeholder to be filled with the javascript response from Braintree -->
 <%= form_tag order_path do %>
   <div id="payment-form"></div> <br>
   <input type="submit" value="Pay £10" class="btn btn-success btn-lg" style="width: 200px">
 <% end %>
 
+<!-- Javascript for the Braintree drop-in UI -->
 <script src="https://js.braintreegateway.com/js/braintree-2.24.0.min.js"></script>
 <script>
 

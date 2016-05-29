@@ -1,0 +1,30 @@
+<div align='center'>
+  <%= gravatar_for(@course.college, size: 130) %>
+</div>
+
+
+<h1 align='center'><%= @course.college.name %></h1>
+
+<br>
+
+<h3><%= @course.title %>'s Offers</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Offer</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= link_to "#{offer.course_application.application.user.forename} #{offer.course_application.application.user.surname}", user_path(offer.course_application.application.user)%></td>
+        <td><%= offer.offer_type %></td>
+        <td><%= offer.status %></td>
+        <td><%= link_to "View", offer_path(offer), class: "btn btn-xs btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

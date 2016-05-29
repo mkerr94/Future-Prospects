@@ -1,7 +1,10 @@
 <h1 align='center'><%= @user.forename %>'s Account</h1>
 
 <br>
+
 <br>
+
+<!-- Displaying all the details of a student -->
 
 <div class="content-container">
   <h3 style="font-family: avenir-light">Personal Information</h3>
@@ -31,6 +34,7 @@
     <%= @user.personal_statement %>
   </div>
 
+  <!-- If the student has made an application and that application has been referred, show the reference -->
   <% if @user.application  %>
     <% if @user.application.reference %>
       <h3 style="font-family: avenir-light">Reference</h3>

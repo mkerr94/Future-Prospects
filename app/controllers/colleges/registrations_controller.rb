@@ -1,5 +1,9 @@
 class Colleges::RegistrationsController < Devise::RegistrationsController
 
+  # Custom registrations controller
+  # Over riding default devise code to whitelist additional parameters
+
+  # Create method from the Devise github repo
   def create
     build_resource(registration_params)
 
@@ -20,6 +24,7 @@ class Colleges::RegistrationsController < Devise::RegistrationsController
 
   private
 
+  # Additional parameters to be saved upon registration
   def registration_params
       params.require(:college).permit(:email, :password, :password_confirmation, :address, :name, :description, :phone_no)
   end

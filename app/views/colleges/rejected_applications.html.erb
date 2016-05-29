@@ -1,5 +1,7 @@
 <h2 class="subheading">All Rejected Applications</h2> <br>
 
+<!-- List all applications that the signed in college has rejected  -->
+
 <div class="content-container">
   <table class="table">
     <thead>
@@ -45,4 +47,6 @@
       <% end %>
     </tbody>
   </table>
+  <br>
+  <%= link_to "View PDF", rejected_college_applications_path(:format => :pdf), class: "btn btn-default btn-sm" %>
 </div>

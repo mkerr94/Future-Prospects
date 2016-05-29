@@ -1,0 +1,61 @@
+<div align='center'>
+  <% if college_signed_in? %>
+    <% @college = current_college %>
+  <% end %>
+  <%= gravatar_for(@college, size: 130) %>
+</div>
+
+
+<h1 align='center'><%= @college.name %></h1>
+
+<br>
+
+<h3>All Courses</h3>
+
+<br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Categories</th>
+      <th>Applications</th>
+      <th>Spaces</th>
+      <th>Offers</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @college_courses.each do |course| %>
+        <tr>
+          <td><%= course.title %></td>
+          <td>
+            <% course.categories.each do |cat| %>
+              <%= cat.name %>
+            <% end %>
+          </td>
+          <td>
+            <% @counter = 0 %>
+            <% @course_applications = course.course_applications %>
+            <% @course_applications.each do |app| %>
+              <% if app.application.referred && !app.offer && app.status != "rejected"%>
+                <% @counter = @counter + 1 %>
+              <% end %>
+            <% end %>
+            <%= @counter %>
+          </td>
+          <td>
+            <%= course.spaces %>
+          </td>
+          <td>
+            <% @offer_counter = 0 %>
+            <% @course_applications.each do |app| %>
+              <% if app.offer %>
+                <% @offer_counter = @offer_counter + 1 %>
+              <% end %>
+            <% end %>
+            <%= @offer_counter %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

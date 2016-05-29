@@ -1,7 +1,12 @@
 <br>
+
 <h3 class="subheading"><%= @course.title %>'s Offers</h3>
+
 <br>
+
 <br>
+
+<!-- List of offers for a particular course -->
 
 <div class="content-container">
   <table class="table">
@@ -25,3 +30,5 @@
     </tbody>
   </table>
 </div>
+
+<%= link_to "View PDF", {:controller => "courses", :action => "course_offers", :course => course.id }, (:format => :pdf), class: "btn btn-default btn-sm" %>

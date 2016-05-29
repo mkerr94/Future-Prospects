@@ -4,6 +4,8 @@
 
 <br>
 
+<!-- List all courses belonging to the current college with application data -->
+
 <div class="content-container">
   <table class="table">
     <thead>
@@ -25,6 +27,7 @@
               <% end %>
             </td>
             <td>
+              <!-- Starting at 0, counting each application made to a course, incrementing by 1 for each application -->
               <% @counter = 0 %>
               <% @course_applications = course.course_applications %>
               <% @course_applications.each do |app| %>
@@ -32,22 +35,31 @@
                   <% @counter = @counter + 1 %>
                 <% end %>
               <% end %>
+              <!-- Display how many applications have been made to a particular course, link to a list of those applications -->
               <%= link_to @counter, {:controller => "courses", :action => "course_applications", :course => course.id } %>
             </td>
+            <!-- Show remaining spaces on the course -->
             <td>
               <%= course.spaces %>
             </td>
             <td>
+              <!-- Starting at 0, counting each offer made to any applications to the course, incrementing by 1 for each offer -->
               <% @offer_counter = 0 %>
               <% @course_applications.each do |app| %>
                 <% if app.offer %>
                   <% @offer_counter = @offer_counter + 1 %>
                 <% end %>
               <% end %>
+              <!-- Display how many offers have been made for that course, link to a list of those offers -->
               <%= link_to @offer_counter, {:controller => "courses", :action => "course_offers", :course => course.id } %>
             </td>
           </tr>
         <% end %>
       </tbody>
   </table>
+
+  <br>
+
+  <%= link_to "View PDF", college_courses_path(:format => :pdf), class: "btn btn-default btn-sm" %>
+
 </div>

@@ -1,9 +1,12 @@
+<!-- Header -->
 <h1 align='center'>
   <%= @user.forename %>'s Application
 </h1>
 
 <br>
 <br>
+
+<!-- If the student has already accepted an offer, don't show their application. Instead display success notice, indicating that they are at the end of the process -->
 
 <% if @user.has_accepted_offer %>
 <div class="content-container">
@@ -19,8 +22,13 @@
 </div>
 
 <% else %>
+
 <h4 align='center'>You applied to: </h4>
+
 <br>
+
+<!-- List all courses that the student has applied to -->
+
 <% @courses.each do |course| %>
     <div class="row">
         <div class="col-xs-6 col-xs-offset-3">

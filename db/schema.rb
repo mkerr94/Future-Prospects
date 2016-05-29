@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518120302) do
+ActiveRecord::Schema.define(version: 20160526103726) do
 
   create_table "applications", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -172,8 +172,12 @@ ActiveRecord::Schema.define(version: 20160518120302) do
     t.integer  "referee_id"
     t.text     "qualifications"
     t.string   "date_of_birth"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
   end
 
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

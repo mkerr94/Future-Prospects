@@ -1,3 +1,4 @@
+<!-- If student hasn't paid, show warning that they must pay and link to payment form -->
 <% if !current_user.has_paid %>
 <div class="content-container">
   <div class="alert alert-warning" role="alert">
@@ -6,14 +7,16 @@
     You must make payment before you can apply
   </div>
 </div>
-
 <div class="form-group">
   <div align='center'>
     <%= link_to "Make Payment", new_order_path, class: "btn btn-danger btn-lg", style: "width:200px" %>
   </div>
 </div>
 <% end %>
+
 <br>
+
+<!-- Application form, up to 5 applications max, with dynamic searching for the select lists -->
 
 <%= form_for(@application, :html => {class: "form-horizontal", role: "form"}) do |f| %>
 <% if @application.errors.any? %>
@@ -78,6 +81,8 @@
             </div>
           </div>
 
+          <!-- The javascript for the dynamically updating select lists -->
+
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
             <script id="jsbin-javascript">
             jQuery.fn.filterByText = function(textbox, selectSingleMatch) {
@@ -127,6 +132,8 @@
 
   <br>
   <hr>
+
+  <!-- If the student has paid, show apply button -->
 
   <% if current_user.has_paid %>
   <div class="form-group"

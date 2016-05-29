@@ -1,0 +1,58 @@
+<div align='center'>
+  <% if college_signed_in? %>
+    <% @college = current_college %>
+  <% end %>
+  <%= gravatar_for(@college, size: 130) %>
+</div>
+
+
+<h1 align='center'><%= @college.name %></h1>
+
+<br>
+
+<h3>Rejected Applications</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Forename</th>
+      <th>Surname</th>
+      <th>Email</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- For each course application attached to the current college do the following --->
+    <% @college_course_applications.each do |app| %>
+      <% if !app.offer && app.application.referred && app.status == "rejected"%>
+        <!-- Finding the course of the the current course application -->
+        <% @course = @courses.find(app.course_id) %>
+        <!-- Displaying the course title, linking to the course page -->
+        <tr>
+          <td>
+            <%= link_to "#{@course.title}", course_path(@course) %>
+          </td>
+          <td>
+            <!-- Finding the application object attached to the course application -->
+            <% @application = @applications.find(app.application_id) %>
+           <!-- Finding the user object attached to the application -->
+           <% @user = @users.find(@application.user_id) %>
+           <!-- Displaying the names of the attached student -->
+           <%= @user.forename %> <br>
+          </td>
+          <td>
+            <%= @user.surname %>
+          </td>
+          <td>
+            <!-- Displaying the email of the student -->
+            <%= link_to "#{@user.email}", user_path(@user) %>
+          </td>
+          <td>
+            <%= link_to "View", {:controller => "applications", :action => "course_application_show", :course => app.course.id, :user => @user }, class: "btn btn-primary btn-xs" %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

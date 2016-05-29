@@ -1,4 +1,8 @@
 <br>
+
+<!-- Displaying the details of a course -->
+
+<!-- Header including title and gravatar -->
 <div align='center'>
   <%= link_to gravatar_for(@course.college, size: 150), college_path(@course.college) %>
   <hr width="200px">
@@ -8,13 +12,12 @@
 </div>
 
 <br>
-
+<!-- Categories -->
 <p align='center'><%= render @course.categories %></p>
 
 <br>
-
+<!-- Course details -->
 <div class="well col-xs-10 col-xs-offset-1">
-
     <div class="course-main">
       <h3 style="font-family: avenir-light">Description</h3>
         <%= simple_format(@course.description) %>
@@ -39,6 +42,7 @@
 
 <br>
 
+<!-- If a student has logged in and hasnt already applied, display button linking to a new application -->
 <% if user_signed_in? && current_user.applied == false %>
   <div class="row">
     <br>

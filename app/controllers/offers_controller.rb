@@ -1,13 +1,16 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_offer, only: [:show, :edit, :update, :destroy] # call the set_offer method for each of the specified methods
 
+  # Listing all offers
   def index
     @offers = Offer.all
   end
 
+  # Showing an offer
   def show
   end
 
+  # HTTP GET for new offer form
   def new
     @offer = Offer.new
     # Class variable, course application to receive offer passed through url query parameter
@@ -17,6 +20,7 @@ class OffersController < ApplicationController
     @offer.course_application_id = @@course_application.id
   end
 
+  # HTTP POST for creating a new offer
   def create
     @offer = Offer.new(offer_params)
     @offer.college = current_college
@@ -28,15 +32,17 @@ class OffersController < ApplicationController
         format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
       else
         format.html { render :new }
+        # JSON format for easy debugging
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # HTTP GET for editing an offer
   def edit
   end
 
-
+  # HTTP PATCH for updating an offer, generated using rails scaffolding
   def update
     respond_to do |format|
       if @offer.update(offer_params)
@@ -49,6 +55,7 @@ class OffersController < ApplicationController
     end
   end
 
+  # Deleting an offer
   def destroy
     @offer.destroy
     respond_to do |format|
@@ -57,6 +64,7 @@ class OffersController < ApplicationController
     end
   end
 
+  # A student accepting an offer from a college
   def accept
     # Creating offer and saving new status
     @offer = Offer.find(params[:offer])
@@ -79,7 +87,7 @@ class OffersController < ApplicationController
     @user.save
   end
 
-  # When a user declines an offer
+  # A student declining an offer from a college
   def decline
     @offer = Offer.find(params[:offer])
     @offer.status = "Declined"
@@ -91,8 +99,6 @@ class OffersController < ApplicationController
       flash[:success] = "Offer has been declined"
       redirect_to user_offers_path
     end
-
-
   end
 
   # When a college rejects an application
@@ -103,16 +109,17 @@ class OffersController < ApplicationController
         flash[:success] = "Application was rejected"
         redirect_to college_applications_path
     end
-
-
   end
+
 
   private
 
+    # Retrieving the requested offer
     def set_offer
       @offer = Offer.find(params[:id])
     end
 
+    # Whitelisted parameters for an offer
     def offer_params
       params.require(:offer).permit(:offer_type, :details, :college, :course_application)
     end

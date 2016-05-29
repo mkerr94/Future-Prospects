@@ -1,0 +1,40 @@
+<div align='center'>
+  <% if college_signed_in? %>
+    <% @college = current_college %>
+  <% end %>
+  <%= gravatar_for(@college, size: 130) %>
+</div>
+
+
+<h1 align='center'><%= @college.name %></h1>
+
+<br>
+
+<h3>All Offers</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Course</th>
+      <th>Offer</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @offers.each do |offer| %>
+      <tr>
+        <td><%= "#{offer.course_application.application.user.forename} #{offer.course_application.application.user.surname}"%></td>
+        <td><%= offer.course_application.course.title%></td>
+        <td><%= offer.offer_type %></td>
+        <td>
+          <% if offer.status == "Declined" %>
+            <p class="label label-danger"><%= offer.status %></p>
+            <% else %>
+            <%= offer.status %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
