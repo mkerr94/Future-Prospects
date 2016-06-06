@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
 
+  before_filter :require_authorization, :only => [:edit, :update, :delete, :new, :create, :destroy, :course_applications, :course_offers]
+
+
   # Listing all courses
   def index
     @courses = Course.search(params[:search]).order(:title)
@@ -48,7 +51,7 @@ class CoursesController < ApplicationController
   def destroy
     @course = Course.find(params[:id])
     @course.destroy
-    flash[:danger] = 'Course deleted'
+    flash[:alert] = 'Course deleted'
     redirect_to courses_path
   end
 
@@ -69,6 +72,13 @@ class CoursesController < ApplicationController
   # Whitelisting the values which can be passed from view to controller
   def course_params
     params.require(:course).permit(:title, :description, :requirements, :curriculum, :college, category_ids: [])
+  end
+
+  def require_authorization
+    if !college_signed_in?
+      flash[:alert] = 'You do not have permission to access this page'
+      redirect_to courses_path
+    end
   end
 
 end

@@ -11,7 +11,7 @@ class Course < ActiveRecord::Base
 
     # Validations
     validates :title, presence: true, length: { minimum: 3, maximum: 50 }
-    validates :description, presence: true, length: { minimum: 10, maxium: 600 }
+    validates :description, presence: true, length: { minimum: 10, maximum: 600 }
 
     # Uncomment for production. These validations are turned off to make testing easier
     # validates :requirements, presence: true, length: { minimum: 10, maxium: 600 }

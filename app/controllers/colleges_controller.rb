@@ -1,5 +1,7 @@
 class CollegesController < ApplicationController
 
+  before_filter :require_authorization, :only => [:edit, :update, :delete, :college_applications, :college_courses, :college_offers, :rejected_applications]
+
   # Listing all colleges with optional pagination, sorting by the search parameters from the search box in the view
   def index
     @colleges = College.search(params[:search]).paginate(:page => params[:page], :per_page => 9).order(:name)
@@ -93,6 +95,13 @@ class CollegesController < ApplicationController
       end
     end
 
+  end
+
+  def require_authorization
+    if !college_signed_in?
+      flash[:alert] = 'You do not have permission to access this page'
+      redirect_to courses_path
+    end
   end
 
 end

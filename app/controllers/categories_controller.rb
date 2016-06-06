@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
 
+  before_filter :require_authorization, :only => [:new, :create, :edit, :update]
+
     # Listing all categories
     def index
       @categories = Category.all
@@ -48,5 +50,13 @@ class CategoriesController < ApplicationController
     def category_params
     params.require(:category).permit(:name)
     end
+
+    def require_authorization
+      if !college_signed_in?
+        flash[:alert] = 'You do not have permission to access this page'
+        redirect_to categories_path
+      end
+    end
+
 
 end

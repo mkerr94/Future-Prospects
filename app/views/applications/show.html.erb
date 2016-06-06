@@ -17,7 +17,11 @@
     You have accepted the following offer
   </p>
   <% @accepted_course_application.each do |app| %>
-    <%= app.offer.details %>
+    <strong>Offer Type: </strong><%= app.offer.offer_type %> <br>
+    <strong>From: </strong><%= app.course.college.name %> <br>
+    <strong>To Study: </strong><%= app.course.title %> <br>
+    <br>
+    <%= link_to "View", offer_path(app.offer), class: "btn btn-sm btn-primary" %>
   <% end %>
 </div>
 

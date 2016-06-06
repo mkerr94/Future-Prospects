@@ -4,6 +4,17 @@
 <div class="row">
     <div class="col-xs-12">
         <%= form_for(@category, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <% if @category.errors.any? %>
+          <div id="error_explanation" class="content-container">
+          <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+
+          <ul>
+          <% @category.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+          </ul>
+          </div>
+        <% end %>
         <div class="form-group">
             <div class="control-label col-sm-2">
                 <%= f.label :name %>
